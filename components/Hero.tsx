@@ -63,10 +63,10 @@ export default function Hero() {
 
         <h1 className="text-center font-display font-black leading-[0.9] tracking-tight text-cocoa">
           <span className="block text-6xl md:text-8xl lg:text-[9rem]">
-            <WordMask text={t.hero.line1} />
+            <WordMask text={t.hero.line1} onMount />
           </span>
           <span className="block text-6xl md:text-8xl lg:text-[9rem] relative">
-            <WordMask text={t.hero.line2} delay={0.15} />
+            <WordMask text={t.hero.line2} delay={0.15} onMount />
             <motion.span
               initial={{ scale: 0, rotate: -45 }}
               animate={{ scale: 1, rotate: 0 }}
@@ -77,7 +77,7 @@ export default function Hero() {
             </motion.span>
           </span>
           <span className="block text-7xl md:text-9xl lg:text-[11rem] grad-text italic">
-            <WordMask text={t.hero.line3} delay={0.3} />
+            <WordMask text={t.hero.line3} delay={0.3} onMount />
           </span>
         </h1>
 
