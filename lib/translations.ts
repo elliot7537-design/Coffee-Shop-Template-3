@@ -50,6 +50,7 @@ type Dict = {
       body: string;
     }[];
     pinned: string;
+    teamLabel: string;
   };
   why: {
     eyebrow: string;
@@ -168,7 +169,8 @@ export const translations: Record<Locale, Dict> = {
       eyebrow: "nuestra historia",
       title: "empezó con una taza",
       intro:
-        "Un día en 2017, Lupita y su sobrina Fer abrieron una ventanita en la Roma. Pensaron que nadie iba a venir. Ocho años después, aquí seguimos — platicando con los mismos clientes de siempre y conociendo a los nuevos.",
+        "Un día en 2017, Lupita y su sobrina Fer abrieron una ventanita en la Roma. Sirvieron un solo cafecito el primer día. Ocho años después, aquí seguimos — platicando con los mismos clientes de siempre y conociendo a los nuevos.",
+      teamLabel: "conoce al equipo",
       notes: [
         {
           title: "la abuela Lupita",
@@ -183,7 +185,7 @@ export const translations: Record<Locale, Dict> = {
           body: "perrito oficial. duerme bajo la mesa 3.",
         },
       ],
-      pinned: "foto del primer día!",
+      pinned: "la primera taza — 2017 ✿",
     },
     why: {
       eyebrow: "por qué cafecito",
@@ -336,7 +338,8 @@ export const translations: Record<Locale, Dict> = {
       eyebrow: "our story",
       title: "it started with a cup",
       intro:
-        "One day in 2017, Lupita and her niece Fer opened a tiny window in Roma. They thought nobody would come. Eight years later, we're still here — chatting with the same regulars and meeting new friends every day.",
+        "One day in 2017, Lupita and her niece Fer opened a tiny window in Roma. They served just one little cup on day one. Eight years later, we're still here — chatting with the same regulars and meeting new friends every day.",
+      teamLabel: "meet the crew",
       notes: [
         {
           title: "grandma Lupita",
@@ -351,7 +354,7 @@ export const translations: Record<Locale, Dict> = {
           body: "official pup. sleeps under table 3.",
         },
       ],
-      pinned: "photo from opening day!",
+      pinned: "the very first cup — 2017 ✿",
     },
     why: {
       eyebrow: "why cafecito",
