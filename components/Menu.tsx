@@ -344,39 +344,66 @@ function IllustratedDrink({ index }: { index: number }) {
       <circle cx="118" cy="144" r="1.2" fill="#8B4513" />
     </svg>,
 
-    // 5: Hibiscus latte — layered pink gradient glass, flower, coconut dust
+    // 5: Hibiscus latte — layered pink drink with a big 5-petal hibiscus on top
     <svg key={5} viewBox="0 0 200 160" className="w-5/6 h-auto">
       {/* saucer */}
-      <ellipse cx="100" cy="152" rx="58" ry="6" fill="#FFF6E3" stroke="#2B1B3A" strokeWidth="2.5" />
-      {/* glass */}
+      <ellipse cx="100" cy="152" rx="60" ry="6" fill="#FFF6E3" stroke="#2B1B3A" strokeWidth="2.5" />
+      {/* glass body */}
       <path
-        d="M58 48 L 64 148 Q 66 152 78 152 L 122 152 Q 134 152 136 148 L 142 48 Z"
+        d="M56 58 L 62 148 Q 64 152 76 152 L 124 152 Q 136 152 138 148 L 144 58 Z"
         fill="#FFF6E3"
         stroke="#2B1B3A"
         strokeWidth="3"
-        fillOpacity="0.4"
+        fillOpacity="0.35"
       />
       {/* layer: coconut milk top */}
-      <path d="M58 48 L 142 48 L 139 78 L 61 78 Z" fill="#FFE8DE" />
+      <path d="M57 62 L 143 62 L 140 82 L 60 82 Z" fill="#FFE8DE" />
       {/* layer: hibiscus middle */}
-      <path d="M61 78 L 139 78 L 137 110 L 63 110 Z" fill="#FF9BAC" />
+      <path d="M60 82 L 140 82 L 137 114 L 63 114 Z" fill="#FF9BAC" />
       {/* layer: espresso bottom */}
-      <path d="M63 110 L 137 110 L 134 146 Q 132 152 122 152 L 78 152 Q 68 152 66 146 Z" fill="#6B4A3A" />
-      {/* rim */}
-      <ellipse cx="100" cy="48" rx="42" ry="6" fill="#FFF0E6" stroke="#2B1B3A" strokeWidth="3" />
-      {/* coconut dust */}
-      <circle cx="84" cy="48" r="1.5" fill="#FFF6E3" stroke="#2B1B3A" strokeWidth="0.6" />
-      <circle cx="100" cy="46" r="1.8" fill="#FFF6E3" stroke="#2B1B3A" strokeWidth="0.6" />
-      <circle cx="116" cy="48" r="1.4" fill="#FFF6E3" stroke="#2B1B3A" strokeWidth="0.6" />
-      {/* highlight */}
-      <path d="M68 64 L 70 140" stroke="#FFF6E3" strokeWidth="3" strokeLinecap="round" opacity="0.8" />
-      {/* hibiscus flower garnish */}
-      <g transform="translate(100 28)">
-        <path d="M0 -10 Q 8 -6 6 2 Q 10 8 2 10 Q -2 16 -6 8 Q -14 6 -10 -2 Q -8 -10 0 -10 Z" fill="#FF6B6B" stroke="#2B1B3A" strokeWidth="1.8" />
-        <circle r="3" fill="#FFD56B" stroke="#2B1B3A" strokeWidth="1.2" />
+      <path d="M63 114 L 137 114 L 134 146 Q 132 152 122 152 L 78 152 Q 68 152 66 146 Z" fill="#6B4A3A" />
+      {/* wavy layer boundaries for a soft drink look */}
+      <path d="M57 82 Q 80 78 100 82 T 143 82" stroke="#2B1B3A" strokeWidth="1.5" fill="none" opacity="0.4" />
+      <path d="M60 114 Q 80 110 100 114 T 140 114" stroke="#2B1B3A" strokeWidth="1.5" fill="none" opacity="0.4" />
+      {/* rim (coconut milk ellipse) */}
+      <ellipse cx="100" cy="58" rx="44" ry="7" fill="#FFF0E6" stroke="#2B1B3A" strokeWidth="3" />
+      <ellipse cx="100" cy="56" rx="36" ry="3" fill="#FFE8DE" />
+      {/* coconut flakes */}
+      <ellipse cx="82" cy="57" rx="3" ry="1.3" fill="#FFF6E3" stroke="#2B1B3A" strokeWidth="0.8" transform="rotate(-20 82 57)" />
+      <ellipse cx="100" cy="54" rx="3.5" ry="1.5" fill="#FFF6E3" stroke="#2B1B3A" strokeWidth="0.8" />
+      <ellipse cx="118" cy="57" rx="3" ry="1.3" fill="#FFF6E3" stroke="#2B1B3A" strokeWidth="0.8" transform="rotate(18 118 57)" />
+      {/* glass highlight */}
+      <path d="M68 72 L 70 140" stroke="#FFF6E3" strokeWidth="3" strokeLinecap="round" opacity="0.85" />
+      {/* hibiscus flower — 5 rounded petals */}
+      <g transform="translate(138 30)">
+        {/* stem/leaf */}
+        <path d="M-2 12 Q -10 22 -16 28" stroke="#4A7A4A" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+        <path d="M-10 22 Q -16 18 -20 22 Q -16 26 -10 22 Z" fill="#7AD9C4" stroke="#2B1B3A" strokeWidth="1.5" />
+        {/* petals */}
+        <g stroke="#2B1B3A" strokeWidth="1.8" strokeLinejoin="round">
+          <ellipse cx="0" cy="-12" rx="7" ry="9" fill="#FF6B6B" />
+          <ellipse cx="11" cy="-4" rx="7" ry="9" fill="#FF6B6B" transform="rotate(72 11 -4)" />
+          <ellipse cx="7" cy="9" rx="7" ry="9" fill="#FF6B6B" transform="rotate(144 7 9)" />
+          <ellipse cx="-7" cy="9" rx="7" ry="9" fill="#FF6B6B" transform="rotate(216 -7 9)" />
+          <ellipse cx="-11" cy="-4" rx="7" ry="9" fill="#FF6B6B" transform="rotate(288 -11 -4)" />
+        </g>
+        {/* petal highlights */}
+        <path d="M-2 -16 Q 0 -18 2 -16" stroke="#FFC4CF" strokeWidth="2" fill="none" strokeLinecap="round" />
+        {/* pistil */}
+        <circle r="4.5" fill="#FFD56B" stroke="#2B1B3A" strokeWidth="1.5" />
+        <circle r="1.5" fill="#C88A3A" />
+        {/* stamens */}
+        <circle cx="0" cy="-3" r="0.8" fill="#2B1B3A" />
+        <circle cx="2" cy="-1" r="0.8" fill="#2B1B3A" />
+        <circle cx="-2" cy="-1" r="0.8" fill="#2B1B3A" />
       </g>
-      {/* tiny leaf */}
-      <path d="M118 36 Q 126 30 130 38 Q 124 42 118 36 Z" fill="#7AD9C4" stroke="#2B1B3A" strokeWidth="1.5" />
+      {/* tiny sparkle by the flower */}
+      <path
+        d="M162 20 L 164 24 L 168 26 L 164 28 L 162 32 L 160 28 L 156 26 L 160 24 Z"
+        fill="#FFD56B"
+        stroke="#2B1B3A"
+        strokeWidth="1"
+      />
     </svg>,
   ];
   return variants[index % variants.length];
