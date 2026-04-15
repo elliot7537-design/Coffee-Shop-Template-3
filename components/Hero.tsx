@@ -7,7 +7,6 @@ import {
   Cup,
   StarDoodle,
   HeartDoodle,
-  HandArrow,
   Squiggle,
   Sparkle,
   Cactus,
@@ -143,15 +142,46 @@ export default function Hero() {
               transition={{ delay: 1.4 }}
               className="relative mt-10 hidden md:block"
             >
-              <span className="font-marker text-ink/70 text-xl rotate-[-4deg] inline-block">
+              <span className="font-marker text-ink/75 text-xl rotate-[-4deg] inline-block">
                 {t.hero.handNote}
               </span>
-              <HandArrow className="absolute -top-6 left-56 w-28 h-16 rotate-[20deg]" />
+              {/* Chunky hand-drawn arrow (replaces the thin stringy one) */}
+              <svg
+                viewBox="0 0 180 90"
+                fill="none"
+                className="absolute -top-10 left-56 w-32 h-20 rotate-[14deg]"
+                aria-hidden
+              >
+                <path
+                  d="M10 20 C 40 6 80 10 100 36 C 110 50 118 60 140 64"
+                  stroke="#2B1B3A"
+                  strokeWidth="4.5"
+                  strokeLinecap="round"
+                  fill="none"
+                />
+                <path
+                  d="M140 64 L 120 52 M 140 64 L 126 78"
+                  stroke="#2B1B3A"
+                  strokeWidth="4.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  fill="none"
+                />
+                {/* little double-line accent to make it feel sketched */}
+                <path
+                  d="M18 26 C 44 14 76 18 94 40"
+                  stroke="#2B1B3A"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  fill="none"
+                  opacity="0.5"
+                />
+              </svg>
             </motion.div>
           </div>
 
           {/* CUP column — fixed width, never collides with text */}
-          <div className="relative shrink-0 self-center md:self-start order-1 md:order-2 w-[200px] md:w-[260px] lg:w-[300px]">
+          <div className="relative shrink-0 self-center md:self-start order-1 md:order-2 w-[260px] md:w-[360px] lg:w-[440px] xl:w-[480px]">
             <motion.div
               style={{ y: cupY, rotate: cupRotate }}
               initial={{ scale: 0.6, opacity: 0, rotate: -20 }}
@@ -163,7 +193,7 @@ export default function Hero() {
               }}
               className="relative"
             >
-              <Cup className="w-full h-auto drop-shadow-[5px_5px_0_#2B1B3A]" />
+              <Cup className="w-full h-auto drop-shadow-[8px_8px_0_#2B1B3A]" />
 
               {/* "recién tostado" sticker */}
               <motion.div
