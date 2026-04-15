@@ -61,7 +61,7 @@ function BeansTrio() {
   );
 }
 
-function MilkJug() {
+function MilkJug({ label }: { label: string }) {
   return (
     <svg viewBox="0 0 120 120" className="w-full h-full">
       {/* body */}
@@ -98,7 +98,7 @@ function MilkJug() {
       <circle cx="84" cy="96" r="3" fill="#FF9BAC" opacity="0.7" />
       {/* M label */}
       <text x="66" y="78" textAnchor="middle" fontFamily="var(--font-hand)" fontSize="12" fontWeight="700" fill="#2B1B3A">
-        leche
+        {label}
       </text>
     </svg>
   );
@@ -354,7 +354,7 @@ export default function Recipe() {
   const ingredients = [
     { icon: <WaterDrop />, bg: "bg-sky" },
     { icon: <BeansTrio />, bg: "bg-sunny" },
-    { icon: <MilkJug />, bg: "bg-bubblegum" },
+    { icon: <MilkJug label={t.recipe.milkLabel} />, bg: "bg-bubblegum" },
     { icon: <CinnamonStick />, bg: "bg-peach" },
     { icon: <LoveHeart />, bg: "bg-mint" },
   ];
@@ -382,7 +382,7 @@ export default function Recipe() {
             />
           </h2>
           <div className="mt-2 font-hand text-2xl text-ink/60">
-            ✦ 5 ingredientes + mucho cariño ✦
+            {t.recipe.intro}
           </div>
         </div>
 
@@ -462,14 +462,14 @@ export default function Recipe() {
                   transition={{ delay: 1.3, type: "spring", stiffness: 180 }}
                   className="absolute -top-5 -right-4 bg-sunny text-ink text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full border-[2.5px] border-ink shadow-sticker"
                 >
-                  ¡listo!
+                  {t.recipe.done}
                 </motion.span>
               </div>
               <div className="mt-4 font-display font-bold text-ink text-lg">
-                un cafecito
+                {t.recipe.finalLabel}
               </div>
               <div className="mt-1 font-hand text-lg text-ink/65 leading-none">
-                para ti ♥
+                {t.recipe.finalNote}
               </div>
             </motion.div>
           </div>

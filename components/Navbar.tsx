@@ -67,7 +67,7 @@ export default function Navbar() {
                     animate={{ y: [0, -2, 0] }}
                     transition={{ duration: 2, repeat: Infinity }}
                   >
-                    nuevo
+                    {t.nav.newBadge}
                   </motion.span>
                 )}
               </a>

@@ -8,6 +8,7 @@ type Dict = {
     visit: string;
     reserve: string;
     language: string;
+    newBadge: string;
   };
   hero: {
     hello: string;
@@ -22,12 +23,18 @@ type Dict = {
     sticker2: string;
     sticker3: string;
     handNote: string;
+    marquee: string[];
   };
   recipe: {
     eyebrow: string;
     title: string;
     parts: { label: string; note: string }[];
     caption: string;
+    intro: string;
+    done: string;
+    finalLabel: string;
+    finalNote: string;
+    milkLabel: string;
   };
   menu: {
     eyebrow: string;
@@ -71,6 +78,9 @@ type Dict = {
     cta1: string;
     cta2: string;
     mapNote: string;
+    mapPark: string;
+    mapPlaza: string;
+    mapHere: string;
   };
   footer: {
     bye: string;
@@ -80,6 +90,8 @@ type Dict = {
     sub: string;
     rights: string;
     madeWith: string;
+    menuLabel: string;
+    writeUs: string;
   };
 };
 
@@ -92,6 +104,7 @@ export const translations: Record<Locale, Dict> = {
       visit: "Cómo llegar",
       reserve: "Reservar",
       language: "EN",
+      newBadge: "nuevo",
     },
     hero: {
       hello: "¡holaaaa!",
@@ -107,6 +120,14 @@ export const translations: Record<Locale, Dict> = {
       sticker2: "abierto todos los días",
       sticker3: "pan casero",
       handNote: "léelo con café en mano ✿",
+      marquee: [
+        "café tostado a mano",
+        "pan recién hecho",
+        "hecho en CDMX",
+        "abiertos 7am-9pm",
+        "wifi rapidito",
+        "pet-friendly",
+      ],
     },
     recipe: {
       eyebrow: "la receta de la casa",
@@ -119,6 +140,11 @@ export const translations: Record<Locale, Dict> = {
         { label: "un poco de amor", note: "ingrediente secreto" },
       ],
       caption: "(shhh, no le digas a nadie del último ingrediente)",
+      intro: "✦ 5 ingredientes + mucho cariño ✦",
+      done: "¡listo!",
+      finalLabel: "un cafecito",
+      finalNote: "para ti ♥",
+      milkLabel: "leche",
     },
     menu: {
       eyebrow: "la cartita",
@@ -242,6 +268,9 @@ export const translations: Record<Locale, Dict> = {
       cta1: "ver en el mapa",
       cta2: "reservar mesita",
       mapNote: "aquí te esperamos! →",
+      mapPark: "parque",
+      mapPlaza: "plaza",
+      mapHere: "¡aquí!",
     },
     footer: {
       bye: "¡nos vemos pronto!",
@@ -251,6 +280,8 @@ export const translations: Record<Locale, Dict> = {
       sub: "suscribirme",
       rights: "todos los derechos reservados",
       madeWith: "hecho con café y amor en CDMX",
+      menuLabel: "menú",
+      writeUs: "¡escríbenos!",
     },
   },
   en: {
@@ -261,6 +292,7 @@ export const translations: Record<Locale, Dict> = {
       visit: "Find us",
       reserve: "Book",
       language: "ES",
+      newBadge: "new",
     },
     hero: {
       hello: "heyyyy!",
@@ -276,6 +308,14 @@ export const translations: Record<Locale, Dict> = {
       sticker2: "open every day",
       sticker3: "homemade bread",
       handNote: "read with coffee in hand ✿",
+      marquee: [
+        "hand-roasted coffee",
+        "fresh-baked bread",
+        "made in CDMX",
+        "open 7am-9pm",
+        "speedy wifi",
+        "pet-friendly",
+      ],
     },
     recipe: {
       eyebrow: "the house recipe",
@@ -288,6 +328,11 @@ export const translations: Record<Locale, Dict> = {
         { label: "a little love", note: "secret ingredient" },
       ],
       caption: "(shhh, don't tell anyone about the last ingredient)",
+      intro: "✦ 5 ingredients + lots of love ✦",
+      done: "all set!",
+      finalLabel: "a cafecito",
+      finalNote: "for you ♥",
+      milkLabel: "milk",
     },
     menu: {
       eyebrow: "the little menu",
@@ -411,6 +456,9 @@ export const translations: Record<Locale, Dict> = {
       cta1: "see on the map",
       cta2: "book a tiny table",
       mapNote: "we're right here! →",
+      mapPark: "park",
+      mapPlaza: "plaza",
+      mapHere: "right here!",
     },
     footer: {
       bye: "see you soon!",
@@ -420,6 +468,8 @@ export const translations: Record<Locale, Dict> = {
       sub: "subscribe",
       rights: "all rights reserved",
       madeWith: "made with coffee and love in CDMX",
+      menuLabel: "menu",
+      writeUs: "say hi!",
     },
   },
 };
