@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f5ebdc;
+  --foreground: #1e120b;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-feature-settings: "ss01", "cv11";
+  overflow-x: hidden;
+}
+
+/* Custom cursor-friendly selection */
+::selection {
+  background: #c85c3b;
+  color: #f5ebdc;
+}
+
+/* Subtle grain overlay */
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/></svg>");
+  opacity: 0.06;
+  mix-blend-mode: multiply;
+  z-index: 60;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #efe3d0;
+}
+::-webkit-scrollbar-thumb {
+  background: #a14430;
+  border-radius: 8px;
+  border: 2px solid #efe3d0;
+}
+
+/* Papel picado border */
+.papel-picado {
+  --c: #c85c3b;
+  background:
+    radial-gradient(circle at 50% 100%, var(--c) 5px, transparent 6px) 0 100% / 20px 10px repeat-x,
+    radial-gradient(circle at 0% 100%, transparent 5px, var(--c) 6px) 10px 100% / 20px 10px repeat-x;
+}
+
+/* Gradient text */
+.grad-text {
+  background: linear-gradient(90deg, #c85c3b 0%, #e8a628 50%, #b23a2c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Reveal masking for text */
+.mask-reveal {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: bottom;
+}
