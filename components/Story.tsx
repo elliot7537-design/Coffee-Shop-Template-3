@@ -68,34 +68,114 @@ export default function Story() {
               className="max-w-md mx-auto"
             >
               <svg viewBox="0 0 400 320" className="w-full h-full">
-                <rect width="400" height="320" fill="#FFD56B" />
-                {/* sun */}
-                <circle cx="320" cy="70" r="34" fill="#FF6B6B" stroke="#2B1B3A" strokeWidth="3" />
-                {/* mountain */}
+                {/* warm morning backdrop */}
+                <rect width="400" height="320" fill="#FFE5A8" />
+                {/* sunburst rays */}
+                <g stroke="#FF9BAC" strokeWidth="3" strokeLinecap="round" opacity="0.55">
+                  <path d="M60 40 L 90 70" />
+                  <path d="M200 24 L 200 56" />
+                  <path d="M340 40 L 310 70" />
+                  <path d="M24 160 L 60 160" />
+                  <path d="M376 160 L 340 160" />
+                </g>
+                {/* soft sun behind cup */}
+                <circle cx="200" cy="150" r="110" fill="#FFD56B" opacity="0.9" />
+                {/* wooden counter */}
+                <rect x="0" y="260" width="400" height="60" fill="#B8834A" stroke="#2B1B3A" strokeWidth="3" />
+                <path d="M0 276 L 400 276 M 0 296 L 400 296" stroke="#8A5E30" strokeWidth="2" opacity="0.6" />
+                {/* saucer */}
+                <ellipse cx="200" cy="260" rx="120" ry="14" fill="#FFF6E3" stroke="#2B1B3A" strokeWidth="3" />
+                <ellipse cx="200" cy="258" rx="96" ry="8" fill="#FFE8C4" stroke="#2B1B3A" strokeWidth="2" />
+                {/* steam — hand drawn wisps */}
                 <path
-                  d="M0 250 L 80 140 L 160 220 L 240 120 L 340 230 L 400 180 L 400 320 L 0 320 Z"
-                  fill="#7AD9C4"
+                  d="M160 70 Q 140 50 160 30 Q 180 10 164 -4"
                   stroke="#2B1B3A"
-                  strokeWidth="3"
+                  strokeWidth="3.5"
+                  strokeLinecap="round"
+                  fill="none"
                 />
-                {/* shop */}
-                <rect x="150" y="200" width="100" height="80" fill="#FFF6E3" stroke="#2B1B3A" strokeWidth="3" />
-                <path d="M140 200 L 200 170 L 260 200 Z" fill="#FF6B6B" stroke="#2B1B3A" strokeWidth="3" />
-                <rect x="180" y="240" width="40" height="40" fill="#2B1B3A" />
-                <text
-                  x="200"
-                  y="195"
-                  textAnchor="middle"
-                  fontFamily="cursive"
-                  fontSize="14"
-                  fontWeight="700"
-                  fill="#2B1B3A"
-                >
-                  CAFECITO
-                </text>
-                {/* clouds */}
-                <ellipse cx="80" cy="60" rx="28" ry="10" fill="#FFF6E3" stroke="#2B1B3A" strokeWidth="2.5" />
-                <ellipse cx="180" cy="40" rx="24" ry="8" fill="#FFF6E3" stroke="#2B1B3A" strokeWidth="2.5" />
+                <path
+                  d="M210 80 Q 190 55 210 30 Q 230 8 212 -6"
+                  stroke="#2B1B3A"
+                  strokeWidth="3.5"
+                  strokeLinecap="round"
+                  fill="none"
+                />
+                <path
+                  d="M258 74 Q 238 52 258 28 Q 276 10 260 -4"
+                  stroke="#2B1B3A"
+                  strokeWidth="3.5"
+                  strokeLinecap="round"
+                  fill="none"
+                />
+                {/* cup body */}
+                <path
+                  d="M120 110 L 130 240 Q 132 258 160 258 L 240 258 Q 268 258 270 240 L 280 110 Z"
+                  fill="#FFF6E3"
+                  stroke="#2B1B3A"
+                  strokeWidth="4"
+                />
+                {/* cup shading */}
+                <path d="M140 130 L 146 232" stroke="#E8D4A8" strokeWidth="6" strokeLinecap="round" opacity="0.8" />
+                {/* coffee surface */}
+                <ellipse cx="200" cy="110" rx="80" ry="14" fill="#3A2418" stroke="#2B1B3A" strokeWidth="4" />
+                <ellipse cx="200" cy="106" rx="72" ry="8" fill="#5A3826" opacity="0.8" />
+                {/* foam heart (latte art) */}
+                <path
+                  d="M200 120 C 184 108 184 96 192 92 Q 200 90 200 98 Q 200 90 208 92 C 216 96 216 108 200 120 Z"
+                  fill="#E8C8A8"
+                  stroke="#2B1B3A"
+                  strokeWidth="2"
+                />
+                {/* cup handle */}
+                <path
+                  d="M280 140 Q 320 152 318 196 Q 316 230 278 226"
+                  stroke="#2B1B3A"
+                  strokeWidth="4"
+                  fill="none"
+                  strokeLinecap="round"
+                />
+                {/* cute smile on cup */}
+                <circle cx="178" cy="180" r="4" fill="#2B1B3A" />
+                <circle cx="222" cy="180" r="4" fill="#2B1B3A" />
+                <path
+                  d="M176 198 Q 200 216 224 198"
+                  stroke="#2B1B3A"
+                  strokeWidth="3.5"
+                  strokeLinecap="round"
+                  fill="none"
+                />
+                <circle cx="162" cy="198" r="7" fill="#FF9BAC" opacity="0.6" />
+                <circle cx="238" cy="198" r="7" fill="#FF9BAC" opacity="0.6" />
+                {/* "2017" scribble note */}
+                <g transform="translate(58 228) rotate(-8)">
+                  <rect x="-4" y="-16" width="68" height="26" fill="#FFF6E3" stroke="#2B1B3A" strokeWidth="2" />
+                  <text
+                    x="30"
+                    y="4"
+                    textAnchor="middle"
+                    fontFamily="cursive"
+                    fontSize="18"
+                    fontWeight="700"
+                    fill="#2B1B3A"
+                  >
+                    día 1 · 2017
+                  </text>
+                </g>
+                {/* little heart sticker */}
+                <path
+                  d="M332 108 C 318 98 318 84 328 80 Q 336 78 336 86 Q 336 78 344 80 C 354 84 354 98 336 108 Z"
+                  fill="#FF6B6B"
+                  stroke="#2B1B3A"
+                  strokeWidth="2.5"
+                />
+                {/* sparkle */}
+                <path
+                  d="M70 100 L 74 108 L 82 112 L 74 116 L 70 124 L 66 116 L 58 112 L 66 108 Z"
+                  fill="#FFF6E3"
+                  stroke="#2B1B3A"
+                  strokeWidth="2"
+                />
               </svg>
             </Polaroid>
             <HeartDoodle
@@ -106,6 +186,17 @@ export default function Story() {
 
           {/* Notes column */}
           <div className="md:col-span-6 relative space-y-5 md:pl-4">
+            <motion.div
+              initial={{ opacity: 0, y: -10, rotate: -4 }}
+              whileInView={{ opacity: 1, y: 0, rotate: -2 }}
+              viewport={{ once: true }}
+              className="flex items-center gap-3 mb-1"
+            >
+              <span className="inline-block bg-coral text-paper font-hand text-2xl px-4 py-1 rounded-full border-[2.5px] border-ink shadow-sticker">
+                ✿ {t.story.teamLabel}
+              </span>
+              <Squiggle className="flex-1 h-4" color="#2B1B3A" />
+            </motion.div>
             {t.story.notes.map((note, i) => (
               <motion.div
                 key={i}

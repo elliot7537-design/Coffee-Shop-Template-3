@@ -152,105 +152,231 @@ export default function Menu() {
 }
 
 function IllustratedDrink({ index }: { index: number }) {
-  // Six different illustrated drinks
+  // Six different illustrated drinks — full card scene with garnishes, steam & shading
   const variants = [
-    // 0: café de olla (brown earthen cup)
-    <svg key={0} viewBox="0 0 200 160" className="w-2/3 h-auto">
+    // 0: Café de olla — clay olla with piloncillo & cinnamon stick
+    <svg key={0} viewBox="0 0 200 160" className="w-5/6 h-auto">
+      {/* steam */}
+      <path d="M82 30 Q 74 18 84 8" stroke="#2B1B3A" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+      <path d="M100 26 Q 92 12 104 4" stroke="#2B1B3A" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+      <path d="M118 30 Q 110 18 122 10" stroke="#2B1B3A" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+      {/* saucer */}
+      <ellipse cx="100" cy="148" rx="70" ry="7" fill="#E8A628" stroke="#2B1B3A" strokeWidth="2.5" />
+      {/* olla body (bulbous clay pot) */}
       <path
-        d="M40 60 L 45 135 Q 47 148 60 148 L 140 148 Q 153 148 155 135 L 160 60 Z"
-        fill="#C85C3B"
+        d="M48 66 Q 30 100 50 132 Q 70 148 100 148 Q 130 148 150 132 Q 170 100 152 66 Z"
+        fill="#B8502E"
         stroke="#2B1B3A"
         strokeWidth="3"
       />
-      <ellipse cx="100" cy="60" rx="60" ry="10" fill="#3A2418" stroke="#2B1B3A" strokeWidth="3" />
-      <path
-        d="M80 40 Q 75 25 90 20 M 100 35 Q 95 18 110 15 M 120 40 Q 115 25 130 22"
-        stroke="#2B1B3A"
-        strokeWidth="2"
-        fill="none"
-        strokeLinecap="round"
-      />
+      {/* shading */}
+      <path d="M62 80 Q 52 110 66 132" stroke="#8A3A20" strokeWidth="4" strokeLinecap="round" fill="none" opacity="0.6" />
+      {/* rim */}
+      <ellipse cx="100" cy="66" rx="52" ry="10" fill="#3A2418" stroke="#2B1B3A" strokeWidth="3" />
+      <ellipse cx="100" cy="64" rx="46" ry="5" fill="#5A3826" opacity="0.7" />
+      {/* handles */}
+      <path d="M48 80 Q 32 88 40 104" stroke="#2B1B3A" strokeWidth="3" fill="none" strokeLinecap="round" />
+      <path d="M152 80 Q 168 88 160 104" stroke="#2B1B3A" strokeWidth="3" fill="none" strokeLinecap="round" />
+      {/* cinnamon stick poking out */}
+      <path d="M118 58 L 138 34" stroke="#2B1B3A" strokeWidth="3" strokeLinecap="round" />
+      <path d="M118 58 L 138 34" stroke="#8B4513" strokeWidth="6" strokeLinecap="round" />
+      <path d="M122 52 L 132 40" stroke="#5A3826" strokeWidth="1.5" />
+      {/* star anise */}
+      <g transform="translate(70 62)">
+        <path d="M0 -5 L 1.5 -1.5 L 5 0 L 1.5 1.5 L 0 5 L -1.5 1.5 L -5 0 L -1.5 -1.5 Z" fill="#8B4513" stroke="#2B1B3A" strokeWidth="1.2" />
+      </g>
+      {/* tiny piloncillo cube on saucer */}
+      <rect x="156" y="140" width="10" height="8" fill="#8B4513" stroke="#2B1B3A" strokeWidth="1.5" />
     </svg>,
-    // 1: cajeta latte (tall glass, swirl)
-    <svg key={1} viewBox="0 0 200 160" className="w-2/3 h-auto">
+
+    // 1: Cajeta latte — tall glass with caramel gradient & foam heart
+    <svg key={1} viewBox="0 0 200 160" className="w-5/6 h-auto">
+      {/* steam */}
+      <path d="M85 26 Q 78 14 88 4" stroke="#2B1B3A" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+      <path d="M112 28 Q 104 14 116 6" stroke="#2B1B3A" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+      {/* saucer */}
+      <ellipse cx="100" cy="152" rx="60" ry="6" fill="#FFF6E3" stroke="#2B1B3A" strokeWidth="2.5" />
+      {/* glass */}
       <path
-        d="M55 40 L 60 150 Q 62 155 75 155 L 125 155 Q 138 155 140 150 L 145 40 Z"
+        d="M60 44 L 66 146 Q 68 152 80 152 L 120 152 Q 132 152 134 146 L 140 44 Z"
         fill="#FFF0CC"
         stroke="#2B1B3A"
         strokeWidth="3"
       />
+      {/* layer: caramel bottom */}
+      <path d="M62 94 L 138 94 L 134 146 Q 132 152 120 152 L 80 152 Q 68 152 66 146 Z" fill="#C88A3A" />
+      {/* layer: milk mid */}
+      <path d="M61 70 L 139 70 L 138 94 L 62 94 Z" fill="#F4DDA8" />
+      {/* swirl on top */}
+      <ellipse cx="100" cy="44" rx="40" ry="6" fill="#FFF6E3" stroke="#2B1B3A" strokeWidth="3" />
+      {/* foam heart */}
       <path
-        d="M55 40 L 145 40 L 143 80 L 57 80 Z"
-        fill="#E8A628"
-      />
-      <path
-        d="M60 80 Q 100 65 140 80"
-        stroke="#2B1B3A"
-        strokeWidth="2.5"
-        fill="none"
-      />
-      <ellipse cx="100" cy="40" rx="45" ry="6" fill="#FFF0CC" stroke="#2B1B3A" strokeWidth="3" />
-    </svg>,
-    // 2: frappé (cup with straw)
-    <svg key={2} viewBox="0 0 200 160" className="w-2/3 h-auto">
-      <path
-        d="M55 55 L 60 145 L 140 145 L 145 55 Z"
-        fill="#F5EBDC"
-        stroke="#2B1B3A"
-        strokeWidth="3"
-      />
-      <path d="M60 55 L 140 55 L 138 90 L 62 90 Z" fill="#6B4A3A" />
-      <rect x="95" y="25" width="10" height="80" fill="#FF6B6B" stroke="#2B1B3A" strokeWidth="3" />
-      <circle cx="80" cy="115" r="4" fill="#2B1B3A" />
-      <circle cx="110" cy="125" r="3" fill="#2B1B3A" />
-    </svg>,
-    // 3: chocolate
-    <svg key={3} viewBox="0 0 200 160" className="w-2/3 h-auto">
-      <path
-        d="M45 60 L 52 140 Q 54 150 70 150 L 130 150 Q 146 150 148 140 L 155 60 Z"
-        fill="#8B4513"
-        stroke="#2B1B3A"
-        strokeWidth="3"
-      />
-      <ellipse cx="100" cy="60" rx="55" ry="10" fill="#3A2418" stroke="#2B1B3A" strokeWidth="3" />
-      <path d="M100 60 m -25 0 a 25 8 0 1 0 50 0 a 25 8 0 1 0 -50 0" fill="#D97B5B" />
-    </svg>,
-    // 4: concha + cafe
-    <svg key={4} viewBox="0 0 200 160" className="w-2/3 h-auto">
-      <circle cx="70" cy="95" r="40" fill="#FFD56B" stroke="#2B1B3A" strokeWidth="3" />
-      <path
-        d="M42 80 L 98 80 M 42 92 L 98 92 M 42 104 L 98 104 M 52 70 L 52 120 M 70 65 L 70 125 M 88 70 L 88 120"
+        d="M100 52 C 92 46 90 40 94 37 Q 98 35 100 40 Q 102 35 106 37 C 110 40 108 46 100 52 Z"
+        fill="#C88A3A"
         stroke="#2B1B3A"
         strokeWidth="1.5"
       />
+      {/* highlight */}
+      <path d="M66 60 L 68 130" stroke="#FFF6E3" strokeWidth="3" strokeLinecap="round" opacity="0.8" />
+      {/* caramel drip */}
+      <path d="M130 48 Q 132 58 128 62" stroke="#8B5A20" strokeWidth="2" fill="none" strokeLinecap="round" />
+    </svg>,
+
+    // 2: Mazapán frappé — clear cup, whipped cream, pink straw, mazapán crumbs
+    <svg key={2} viewBox="0 0 200 160" className="w-5/6 h-auto">
+      {/* straw */}
+      <rect x="97" y="14" width="8" height="100" fill="#FF9BAC" stroke="#2B1B3A" strokeWidth="3" />
+      <path d="M97 18 L 105 18 M 97 38 L 105 38 M 97 58 L 105 58" stroke="#2B1B3A" strokeWidth="1.5" />
+      {/* whipped cream cloud */}
       <path
-        d="M130 70 L 134 135 Q 135 142 145 142 L 170 142 Q 180 142 181 135 L 185 70 Z"
+        d="M58 58 Q 50 44 66 42 Q 72 28 88 36 Q 100 22 116 34 Q 130 26 138 42 Q 152 46 142 60 Z"
+        fill="#FFF6E3"
+        stroke="#2B1B3A"
+        strokeWidth="3"
+      />
+      {/* cup */}
+      <path
+        d="M54 62 L 62 150 Q 64 154 76 154 L 124 154 Q 136 154 138 150 L 146 62 Z"
+        fill="#FFF6E3"
+        stroke="#2B1B3A"
+        strokeWidth="3"
+        fillOpacity="0.6"
+      />
+      {/* iced coffee fill */}
+      <path d="M56 78 L 144 78 L 137 148 Q 136 152 124 152 L 76 152 Q 64 152 63 148 Z" fill="#C89066" />
+      {/* ice cubes */}
+      <rect x="74" y="92" width="16" height="16" fill="#FFF6E3" stroke="#2B1B3A" strokeWidth="2" opacity="0.85" transform="rotate(-8 82 100)" />
+      <rect x="108" y="118" width="14" height="14" fill="#FFF6E3" stroke="#2B1B3A" strokeWidth="2" opacity="0.85" transform="rotate(12 115 125)" />
+      <rect x="90" y="130" width="12" height="12" fill="#FFF6E3" stroke="#2B1B3A" strokeWidth="2" opacity="0.85" transform="rotate(18 96 136)" />
+      {/* mazapán crumbs on cream */}
+      <circle cx="80" cy="46" r="2.5" fill="#E8A628" />
+      <circle cx="110" cy="40" r="2" fill="#E8A628" />
+      <circle cx="126" cy="48" r="2.5" fill="#E8A628" />
+      {/* sweat drops */}
+      <path d="M50 110 Q 46 116 50 120" stroke="#6AB0D9" strokeWidth="2" fill="none" strokeLinecap="round" />
+      <path d="M150 130 Q 154 136 150 140" stroke="#6AB0D9" strokeWidth="2" fill="none" strokeLinecap="round" />
+    </svg>,
+
+    // 3: Mexican chocolate — mug with foam, chili, cinnamon, chocolate tablet
+    <svg key={3} viewBox="0 0 200 160" className="w-5/6 h-auto">
+      {/* steam */}
+      <path d="M80 30 Q 72 16 84 6" stroke="#2B1B3A" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+      <path d="M100 26 Q 92 12 104 2" stroke="#2B1B3A" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+      <path d="M120 30 Q 112 16 124 6" stroke="#2B1B3A" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+      {/* saucer */}
+      <ellipse cx="100" cy="150" rx="64" ry="6" fill="#D97B5B" stroke="#2B1B3A" strokeWidth="2.5" />
+      {/* mug */}
+      <path
+        d="M52 62 L 58 138 Q 60 150 76 150 L 124 150 Q 140 150 142 138 L 148 62 Z"
         fill="#6B4A3A"
         stroke="#2B1B3A"
         strokeWidth="3"
       />
-      <ellipse cx="157" cy="70" rx="27" ry="5" fill="#3A2418" stroke="#2B1B3A" strokeWidth="2" />
+      {/* mug shading */}
+      <path d="M64 80 L 68 134" stroke="#4A301F" strokeWidth="5" strokeLinecap="round" opacity="0.6" />
+      <path d="M136 80 L 132 134" stroke="#FFF6E3" strokeWidth="3" strokeLinecap="round" opacity="0.4" />
+      {/* rim */}
+      <ellipse cx="100" cy="62" rx="48" ry="9" fill="#3A2418" stroke="#2B1B3A" strokeWidth="3" />
+      {/* foam */}
+      <ellipse cx="100" cy="60" rx="38" ry="5" fill="#E8C8A8" />
+      {/* cocoa dust */}
+      <circle cx="90" cy="60" r="1.5" fill="#3A2418" />
+      <circle cx="104" cy="58" r="1.5" fill="#3A2418" />
+      <circle cx="116" cy="61" r="1.5" fill="#3A2418" />
+      {/* handle */}
+      <path d="M148 82 Q 170 92 168 116 Q 166 136 146 136" stroke="#2B1B3A" strokeWidth="3" fill="none" strokeLinecap="round" />
+      {/* chili on saucer */}
+      <path d="M40 146 Q 34 138 28 144 Q 26 152 40 152 Z" fill="#FF6B6B" stroke="#2B1B3A" strokeWidth="2" />
+      <path d="M28 144 L 24 140" stroke="#7AD9C4" strokeWidth="2" strokeLinecap="round" />
+      {/* cinnamon stick */}
+      <rect x="146" y="138" width="28" height="6" rx="3" fill="#8B4513" stroke="#2B1B3A" strokeWidth="2" transform="rotate(10 160 141)" />
     </svg>,
-    // 5: hibiscus latte
-    <svg key={5} viewBox="0 0 200 160" className="w-2/3 h-auto">
+
+    // 4: Concha + coffee — detailed concha with shell pattern, mug of coffee
+    <svg key={4} viewBox="0 0 200 160" className="w-5/6 h-auto">
+      {/* plate under concha */}
+      <ellipse cx="62" cy="128" rx="52" ry="6" fill="#FFF6E3" stroke="#2B1B3A" strokeWidth="2.5" />
+      {/* concha base (bread) */}
       <path
-        d="M50 50 L 55 150 L 145 150 L 150 50 Z"
-        fill="#FF9BAC"
+        d="M22 102 Q 22 68 62 68 Q 102 68 102 102 Q 102 128 62 128 Q 22 128 22 102 Z"
+        fill="#D9A561"
         stroke="#2B1B3A"
         strokeWidth="3"
       />
-      <ellipse cx="100" cy="50" rx="50" ry="8" fill="#D97B8A" stroke="#2B1B3A" strokeWidth="3" />
+      {/* vanilla sugar topping */}
       <path
-        d="M100 50 m -25 0 a 25 5 0 0 0 50 0"
-        stroke="#FFF6E3"
-        strokeWidth="2"
+        d="M28 96 Q 28 70 62 70 Q 96 70 96 96 Q 96 104 92 108 L 32 108 Q 28 104 28 96 Z"
+        fill="#FFD56B"
+        stroke="#2B1B3A"
+        strokeWidth="2.5"
+      />
+      {/* shell lines */}
+      <path
+        d="M38 108 Q 38 78 62 78 Q 86 78 86 108 M 48 108 Q 48 82 62 82 Q 76 82 76 108 M 62 108 L 62 80"
+        stroke="#2B1B3A"
+        strokeWidth="1.8"
         fill="none"
       />
-      {/* flower */}
-      <g transform="translate(100 30)">
-        <circle r="8" fill="#FF6B6B" stroke="#2B1B3A" strokeWidth="1.5" />
-        <circle r="3" fill="#FFD56B" />
+      <path d="M32 96 Q 62 94 92 96" stroke="#2B1B3A" strokeWidth="1.5" fill="none" />
+      {/* steam over mug */}
+      <path d="M146 44 Q 138 32 148 22" stroke="#2B1B3A" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+      <path d="M162 46 Q 154 34 164 24" stroke="#2B1B3A" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+      {/* mug */}
+      <path
+        d="M124 68 L 128 138 Q 129 148 140 148 L 172 148 Q 183 148 184 138 L 188 68 Z"
+        fill="#7AD9C4"
+        stroke="#2B1B3A"
+        strokeWidth="3"
+      />
+      {/* coffee rim */}
+      <ellipse cx="156" cy="68" rx="32" ry="6" fill="#3A2418" stroke="#2B1B3A" strokeWidth="3" />
+      {/* mug handle */}
+      <path d="M188 84 Q 202 92 200 112 Q 198 126 184 126" stroke="#2B1B3A" strokeWidth="3" fill="none" strokeLinecap="round" />
+      {/* heart on mug */}
+      <path
+        d="M156 108 C 150 102 150 96 154 94 Q 156 93 156 96 Q 156 93 158 94 C 162 96 162 102 156 108 Z"
+        fill="#FF6B6B"
+        stroke="#2B1B3A"
+        strokeWidth="1.5"
+      />
+      {/* crumbs */}
+      <circle cx="112" cy="138" r="1.8" fill="#8B4513" />
+      <circle cx="118" cy="144" r="1.2" fill="#8B4513" />
+    </svg>,
+
+    // 5: Hibiscus latte — layered pink gradient glass, flower, coconut dust
+    <svg key={5} viewBox="0 0 200 160" className="w-5/6 h-auto">
+      {/* saucer */}
+      <ellipse cx="100" cy="152" rx="58" ry="6" fill="#FFF6E3" stroke="#2B1B3A" strokeWidth="2.5" />
+      {/* glass */}
+      <path
+        d="M58 48 L 64 148 Q 66 152 78 152 L 122 152 Q 134 152 136 148 L 142 48 Z"
+        fill="#FFF6E3"
+        stroke="#2B1B3A"
+        strokeWidth="3"
+        fillOpacity="0.4"
+      />
+      {/* layer: coconut milk top */}
+      <path d="M58 48 L 142 48 L 139 78 L 61 78 Z" fill="#FFE8DE" />
+      {/* layer: hibiscus middle */}
+      <path d="M61 78 L 139 78 L 137 110 L 63 110 Z" fill="#FF9BAC" />
+      {/* layer: espresso bottom */}
+      <path d="M63 110 L 137 110 L 134 146 Q 132 152 122 152 L 78 152 Q 68 152 66 146 Z" fill="#6B4A3A" />
+      {/* rim */}
+      <ellipse cx="100" cy="48" rx="42" ry="6" fill="#FFF0E6" stroke="#2B1B3A" strokeWidth="3" />
+      {/* coconut dust */}
+      <circle cx="84" cy="48" r="1.5" fill="#FFF6E3" stroke="#2B1B3A" strokeWidth="0.6" />
+      <circle cx="100" cy="46" r="1.8" fill="#FFF6E3" stroke="#2B1B3A" strokeWidth="0.6" />
+      <circle cx="116" cy="48" r="1.4" fill="#FFF6E3" stroke="#2B1B3A" strokeWidth="0.6" />
+      {/* highlight */}
+      <path d="M68 64 L 70 140" stroke="#FFF6E3" strokeWidth="3" strokeLinecap="round" opacity="0.8" />
+      {/* hibiscus flower garnish */}
+      <g transform="translate(100 28)">
+        <path d="M0 -10 Q 8 -6 6 2 Q 10 8 2 10 Q -2 16 -6 8 Q -14 6 -10 -2 Q -8 -10 0 -10 Z" fill="#FF6B6B" stroke="#2B1B3A" strokeWidth="1.8" />
+        <circle r="3" fill="#FFD56B" stroke="#2B1B3A" strokeWidth="1.2" />
       </g>
+      {/* tiny leaf */}
+      <path d="M118 36 Q 126 30 130 38 Q 124 42 118 36 Z" fill="#7AD9C4" stroke="#2B1B3A" strokeWidth="1.5" />
     </svg>,
   ];
   return variants[index % variants.length];
