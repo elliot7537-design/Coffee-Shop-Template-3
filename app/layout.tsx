@@ -28,6 +28,11 @@ export const metadata: Metadata = {
   title: "Cafecito · Tu rincón de café en CDMX",
   description:
     "Un cafecito con cariño en la Roma Norte. Granos mexicanos, pan recién hecho, risas de sobra.",
+  // Disable browser / search engine auto-translation so our own
+  // ES/EN toggle stays authoritative.
+  other: {
+    google: "notranslate",
+  },
 };
 
 export default function RootLayout({
@@ -36,9 +41,13 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${display.variable} ${hand.variable} ${body.variable} ${marker.variable}`}
+      translate="no"
+      className={`notranslate ${display.variable} ${hand.variable} ${body.variable} ${marker.variable}`}
     >
-      <body className="font-body text-ink antialiased overflow-x-hidden">
+      <head>
+        <meta name="google" content="notranslate" />
+      </head>
+      <body className="notranslate font-body text-ink antialiased overflow-x-hidden">
         <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
