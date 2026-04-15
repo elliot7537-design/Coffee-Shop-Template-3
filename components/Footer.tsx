@@ -74,7 +74,7 @@ export default function Footer() {
 
             <div className="md:col-span-3">
               <div className="font-hand text-xl mb-3">
-                menú
+                {t.footer.menuLabel}
               </div>
               <ul className="space-y-2">
                 {[t.nav.menu, t.nav.story, t.nav.why, t.nav.visit].map(
@@ -94,7 +94,7 @@ export default function Footer() {
             </div>
 
             <div className="md:col-span-4">
-              <div className="font-hand text-xl mb-3">¡escríbenos!</div>
+              <div className="font-hand text-xl mb-3">{t.footer.writeUs}</div>
               <address className="not-italic space-y-1 text-paper/90 text-sm">
                 <div>Av. Álvaro Obregón 185</div>
                 <div>Roma Norte, CDMX 06700</div>

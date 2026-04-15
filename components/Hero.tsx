@@ -227,14 +227,7 @@ export default function Hero() {
         <div className="flex animate-marquee whitespace-nowrap">
           {[...Array(2)].map((_, outer) => (
             <div key={outer} className="flex items-center">
-              {[
-                "café tostado a mano",
-                "pan recién hecho",
-                "hecho en CDMX",
-                "abiertos 7am-9pm",
-                "wifi rapidito",
-                "pet-friendly",
-              ].map((txt, i) => (
+              {t.hero.marquee.map((txt, i) => (
                 <span
                   key={i}
                   className="font-display font-semibold text-lg mx-6 flex items-center gap-6"

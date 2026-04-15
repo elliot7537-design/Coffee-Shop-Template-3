@@ -150,7 +150,7 @@ export default function Visit() {
                   fontSize="22"
                   fill="#2B1B3A"
                 >
-                  parque
+                  {t.visit.mapPark}
                 </text>
                 {/* plaza circle */}
                 <circle
@@ -169,7 +169,7 @@ export default function Visit() {
                   fontSize="18"
                   fill="#2B1B3A"
                 >
-                  plaza
+                  {t.visit.mapPlaza}
                 </text>
 
                 {/* cafe marker (star) */}
@@ -226,7 +226,7 @@ export default function Visit() {
                   fill="#2B1B3A"
                   transform="rotate(-6, 270, 170)"
                 >
-                  ¡aquí!
+                  {t.visit.mapHere}
                 </text>
               </svg>
 
