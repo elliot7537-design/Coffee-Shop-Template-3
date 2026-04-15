@@ -76,17 +76,31 @@ export default function Navbar() {
         </ul>
 
         <div className="flex items-center gap-2">
-          <motion.button
-            whileHover={{ rotate: 5, scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setLocale(locale === "es" ? "en" : "es")}
-            className="rounded-full border-[2.5px] border-ink bg-sunny px-3 py-1 text-xs font-bold uppercase tracking-wide shadow-sticker hover:bg-bubblegum transition-colors"
-            aria-label="Toggle language"
+          {/* Segmented language toggle — active pill is clearly highlighted */}
+          <div
+            role="group"
+            aria-label="Language"
+            className="relative inline-flex items-center rounded-full border-[2.5px] border-ink bg-paper p-0.5 shadow-sticker overflow-hidden"
           >
-            <span>{locale.toUpperCase()}</span>
-            <span className="text-ink/40 mx-1">/</span>
-            <span className="text-ink/50">{t.nav.language}</span>
-          </motion.button>
+            {(["es", "en"] as const).map((lang) => {
+              const active = locale === lang;
+              return (
+                <button
+                  key={lang}
+                  type="button"
+                  onClick={() => setLocale(lang)}
+                  aria-pressed={active}
+                  className={`relative z-10 px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wide rounded-full transition-colors ${
+                    active
+                      ? "bg-ink text-paper"
+                      : "text-ink/60 hover:text-ink"
+                  }`}
+                >
+                  {lang.toUpperCase()}
+                </button>
+              );
+            })}
+          </div>
 
           <a
             href="#visit"
