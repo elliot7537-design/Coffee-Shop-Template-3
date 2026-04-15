@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Globe } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useLanguage } from "./LanguageProvider";
+import { CoffeeBean } from "./Doodles";
 
 export default function Navbar() {
   const { locale, setLocale, t } = useLanguage();
@@ -11,79 +12,91 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 40);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const links = [
-    { href: "#story", label: t.nav.story },
     { href: "#menu", label: t.nav.menu },
-    { href: "#experience", label: t.nav.experience },
+    { href: "#story", label: t.nav.story },
+    { href: "#why", label: t.nav.why },
     { href: "#visit", label: t.nav.visit },
   ];
 
   return (
     <motion.header
-      initial={{ y: -80, opacity: 0 }}
+      initial={{ y: -60, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-cream/85 backdrop-blur-md border-b border-cocoa/10 py-3"
-          : "bg-transparent py-5"
-      }`}
+      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      className="fixed top-0 left-0 right-0 z-50 pt-3 px-3 md:px-6"
     >
-      <nav className="mx-auto max-w-7xl px-5 md:px-8 flex items-center justify-between">
+      <nav
+        className={`mx-auto max-w-6xl transition-all duration-500 rounded-full flex items-center justify-between gap-3 px-4 md:px-5 py-2.5 border-[2.5px] border-ink ${
+          scrolled
+            ? "bg-paper shadow-stampsm"
+            : "bg-paper/70 backdrop-blur-sm shadow-stampsm"
+        }`}
+      >
         <a href="#home" className="flex items-center gap-2 group">
           <motion.span
-            whileHover={{ rotate: 20 }}
-            transition={{ type: "spring", stiffness: 260 }}
-            className="inline-block text-2xl"
+            whileHover={{ rotate: -20, scale: 1.2 }}
+            className="inline-block"
           >
-            ☕
+            <CoffeeBean className="w-5 h-7" />
           </motion.span>
-          <span className="font-display font-black text-xl text-cocoa tracking-tight">
-            Café del <span className="text-terracotta">Sol</span>
+          <span className="font-display font-bold text-lg md:text-xl text-ink">
+            Cafe<span className="text-coral">cito</span>
+            <span className="text-coral">.</span>
           </span>
         </a>
 
-        <ul className="hidden md:flex items-center gap-8">
-          {links.map((l) => (
+        <ul className="hidden md:flex items-center gap-1.5">
+          {links.map((l, i) => (
             <li key={l.href}>
               <a
                 href={l.href}
-                className="relative text-sm font-medium text-cocoa/80 hover:text-terracotta transition-colors group"
+                className="relative px-3 py-1.5 text-sm font-semibold text-ink/80 hover:text-ink transition-colors group"
               >
                 {l.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-terracotta group-hover:w-full transition-all duration-300" />
+                <span className="absolute left-3 right-3 bottom-0 h-[3px] rounded-full bg-coral scale-x-0 group-hover:scale-x-100 origin-left transition-transform" />
+                {i === 0 && (
+                  <motion.span
+                    className="absolute -top-1 -right-1 text-[10px] bg-coral text-paper px-1.5 rounded-full"
+                    animate={{ y: [0, -2, 0] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  >
+                    nuevo
+                  </motion.span>
+                )}
               </a>
             </li>
           ))}
         </ul>
 
-        <div className="flex items-center gap-3">
-          <button
+        <div className="flex items-center gap-2">
+          <motion.button
+            whileHover={{ rotate: 5, scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => setLocale(locale === "es" ? "en" : "es")}
-            className="group flex items-center gap-1.5 rounded-full border border-cocoa/20 bg-cream/60 hover:bg-terracotta hover:border-terracotta hover:text-cream px-3 py-1.5 text-xs font-bold uppercase tracking-wider transition-colors"
+            className="rounded-full border-[2.5px] border-ink bg-sunny px-3 py-1 text-xs font-bold uppercase tracking-wide shadow-sticker hover:bg-bubblegum transition-colors"
             aria-label="Toggle language"
           >
-            <Globe size={14} className="group-hover:rotate-180 transition-transform duration-500" />
             <span>{locale.toUpperCase()}</span>
-            <span className="text-cocoa/40 group-hover:text-cream/50">/</span>
-            <span className="text-cocoa/40 group-hover:text-cream/80">{t.nav.language}</span>
-          </button>
+            <span className="text-ink/40 mx-1">/</span>
+            <span className="text-ink/50">{t.nav.language}</span>
+          </motion.button>
 
           <a
             href="#visit"
-            className="hidden md:inline-flex items-center rounded-full bg-cocoa text-cream px-4 py-2 text-sm font-semibold hover:bg-terracotta transition-colors"
+            className="hidden md:inline-flex items-center rounded-full border-[2.5px] border-ink bg-coral text-paper px-4 py-1.5 text-sm font-bold shadow-sticker hover:bg-ink transition-colors"
           >
-            {t.nav.reserve}
+            {t.nav.reserve} →
           </a>
 
           <button
-            className="md:hidden p-2 text-cocoa"
+            className="md:hidden p-1.5"
             onClick={() => setOpen(!open)}
             aria-label="Menu"
           >
@@ -99,25 +112,25 @@ export default function Navbar() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden overflow-hidden bg-cream border-t border-cocoa/10"
+            className="md:hidden mx-auto mt-2 max-w-6xl rounded-3xl bg-paper border-[2.5px] border-ink shadow-stampsm overflow-hidden"
           >
-            <div className="px-5 py-6 flex flex-col gap-4">
+            <div className="px-5 py-5 flex flex-col gap-3">
               {links.map((l) => (
                 <a
                   key={l.href}
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="text-lg font-display font-semibold text-cocoa"
+                  className="font-display font-semibold text-lg text-ink"
                 >
-                  {l.label}
+                  → {l.label}
                 </a>
               ))}
               <a
                 href="#visit"
                 onClick={() => setOpen(false)}
-                className="inline-flex w-fit rounded-full bg-cocoa text-cream px-5 py-2 text-sm font-semibold"
+                className="mt-2 inline-flex w-fit rounded-full border-[2.5px] border-ink bg-coral text-paper px-5 py-2 text-sm font-bold"
               >
-                {t.nav.reserve}
+                {t.nav.reserve} →
               </a>
             </div>
           </motion.div>

@@ -3,8 +3,7 @@
 import { motion } from "framer-motion";
 import { MapPin, Clock, Phone } from "lucide-react";
 import { useLanguage } from "./LanguageProvider";
-import Reveal from "./Reveal";
-import { WordMask } from "./AnimatedText";
+import { Squiggle, Cactus, HandArrow, StarDoodle } from "./Doodles";
 
 export default function Visit() {
   const { t } = useLanguage();
@@ -12,115 +11,238 @@ export default function Visit() {
   return (
     <section
       id="visit"
-      className="relative py-24 md:py-32 bg-gradient-to-br from-terracotta via-clay to-chile text-cream overflow-hidden"
+      className="relative py-24 md:py-32 bg-sunny overflow-hidden"
     >
-      {/* Papel picado top */}
-      <motion.div
-        initial={{ scaleX: 0 }}
-        whileInView={{ scaleX: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute top-0 left-0 right-0 h-3 bg-cream papel-picado origin-left"
-        style={{ ["--c" as never]: "#F5EBDC" }}
-      />
+      <div className="mx-auto max-w-6xl px-5 md:px-8">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+          {/* LEFT: address & CTAs */}
+          <div>
+            <motion.span
+              initial={{ opacity: 0, rotate: -10 }}
+              whileInView={{ opacity: 1, rotate: -4 }}
+              viewport={{ once: true }}
+              className="inline-block bg-coral text-paper font-hand text-2xl px-4 py-1 rounded-full border-[2.5px] border-ink shadow-sticker"
+            >
+              ✿ {t.visit.eyebrow}
+            </motion.span>
+            <h2 className="relative mt-4 font-display font-bold text-5xl md:text-7xl text-ink leading-none inline-block">
+              {t.visit.title}
+              <Squiggle
+                className="absolute -bottom-3 left-0 w-56 h-4"
+                color="#FF6B6B"
+              />
+            </h2>
 
-      {/* floating decorative circles */}
-      <motion.div
-        className="absolute top-10 -left-20 w-72 h-72 rounded-full bg-sun/20 blur-3xl pointer-events-none"
-        animate={{ scale: [1, 1.2, 1] }}
-        transition={{ duration: 8, repeat: Infinity }}
-      />
-      <motion.div
-        className="absolute bottom-10 -right-20 w-96 h-96 rounded-full bg-cocoa/30 blur-3xl pointer-events-none"
-        animate={{ scale: [1.2, 1, 1.2] }}
-        transition={{ duration: 10, repeat: Infinity }}
-      />
+            <div className="mt-10 space-y-4">
+              {[
+                { icon: MapPin, text: t.visit.address, bg: "bg-coral text-paper" },
+                { icon: Clock, text: t.visit.hours, bg: "bg-mint text-ink" },
+                { icon: Phone, text: t.visit.phone, bg: "bg-bubblegum text-ink" },
+              ].map(({ icon: Icon, text, bg }, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -30, rotate: -3 }}
+                  whileInView={{ opacity: 1, x: 0, rotate: i % 2 === 0 ? -1 : 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.15 * i, duration: 0.7 }}
+                  whileHover={{ rotate: 0, x: 4 }}
+                  className={`flex items-center gap-4 ${bg} rounded-full border-[2.5px] border-ink pl-4 pr-6 py-3 shadow-stampsm max-w-md`}
+                >
+                  <div className="w-10 h-10 rounded-full bg-paper border-[2.5px] border-ink flex items-center justify-center shrink-0">
+                    <Icon size={18} />
+                  </div>
+                  <span className="font-bold">{text}</span>
+                </motion.div>
+              ))}
+            </div>
 
-      <div className="relative mx-auto max-w-7xl px-5 md:px-8 grid md:grid-cols-2 gap-14 items-center">
-        <div>
-          <Reveal>
-            <span className="font-script text-sun text-2xl">
-              — {t.visit.eyebrow}
-            </span>
-          </Reveal>
-          <h2 className="font-display font-black text-5xl md:text-7xl leading-[0.95] mt-3">
-            <WordMask text={t.visit.title} />
-          </h2>
-
-          <div className="mt-10 space-y-5">
-            {[
-              { icon: MapPin, text: t.visit.address },
-              { icon: Clock, text: t.visit.hours },
-              { icon: Phone, text: t.visit.phone },
-            ].map(({ icon: Icon, text }, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.15 * i, duration: 0.7 }}
-                className="flex items-center gap-4 group"
-              >
-                <div className="w-12 h-12 rounded-2xl bg-cream/15 backdrop-blur flex items-center justify-center border border-cream/20 group-hover:bg-cream group-hover:text-clay transition-colors">
-                  <Icon size={20} />
-                </div>
-                <span className="text-lg font-medium">{text}</span>
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="mt-10 flex flex-wrap gap-3">
-            <Reveal delay={0.2}>
-              <a
+            <div className="mt-9 flex flex-wrap gap-3">
+              <motion.a
                 href="https://maps.google.com"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-cream text-clay px-7 py-4 font-semibold hover:bg-bark hover:text-cream transition-colors"
+                whileHover={{ scale: 1.05, rotate: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className="inline-flex items-center gap-2 rounded-full border-[2.5px] border-ink bg-ink text-paper px-6 py-3 font-bold shadow-stamp"
               >
-                {t.visit.ctaDirections} →
-              </a>
-            </Reveal>
-            <Reveal delay={0.3}>
-              <a
+                {t.visit.cta1} →
+              </motion.a>
+              <motion.a
                 href="#"
-                className="inline-flex items-center gap-2 rounded-full border-2 border-cream/60 px-7 py-4 font-semibold hover:bg-cream hover:text-clay transition-colors"
+                whileHover={{ scale: 1.05, rotate: 2 }}
+                whileTap={{ scale: 0.98 }}
+                className="inline-flex items-center gap-2 rounded-full border-[2.5px] border-ink bg-paper text-ink px-6 py-3 font-bold shadow-stamp"
               >
-                {t.visit.ctaReserve}
-              </a>
-            </Reveal>
+                {t.visit.cta2}
+              </motion.a>
+            </div>
           </div>
-        </div>
 
-        {/* Illustrated storefront / image */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9, y: 40 }}
-          whileInView={{ opacity: 1, scale: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-          className="relative h-[480px] md:h-[560px] rounded-[2.5rem] overflow-hidden border-8 border-cream shadow-2xl"
-        >
-          <img
-            src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1200&auto=format&fit=crop"
-            alt="Storefront"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-bark/50 via-transparent" />
-
+          {/* RIGHT: hand-drawn map */}
           <motion.div
-            initial={{ y: 60, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            className="absolute bottom-6 left-6 right-6 bg-cream/95 backdrop-blur p-5 rounded-2xl text-cocoa"
+            initial={{ opacity: 0, scale: 0.9, rotate: -3 }}
+            whileInView={{ opacity: 1, scale: 1, rotate: -1 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            className="relative bg-paper rounded-[2rem] border-[2.5px] border-ink p-5 shadow-stamp"
           >
-            <div className="font-script text-terracotta text-xl">
-              Roma Norte · CDMX
+            {/* tape */}
+            <div
+              className="absolute -top-4 left-10 w-24 h-6 rotate-[-6deg]"
+              style={{
+                background:
+                  "repeating-linear-gradient(45deg, rgba(255,155,172,0.7) 0 6px, rgba(255,155,172,0.4) 6px 12px)",
+              }}
+            />
+            <div
+              className="absolute -top-4 right-10 w-24 h-6 rotate-[4deg]"
+              style={{
+                background:
+                  "repeating-linear-gradient(45deg, rgba(122,217,196,0.7) 0 6px, rgba(122,217,196,0.4) 6px 12px)",
+              }}
+            />
+
+            <div className="relative aspect-square rounded-[1.5rem] bg-sky/40 overflow-hidden border-[2px] border-ink">
+              <svg
+                viewBox="0 0 400 400"
+                className="absolute inset-0 w-full h-full"
+                preserveAspectRatio="xMidYMid meet"
+              >
+                {/* streets */}
+                <motion.path
+                  d="M0 140 L 400 140 M 0 260 L 400 260 M 140 0 L 140 400 M 260 0 L 260 400"
+                  stroke="#2B1B3A"
+                  strokeWidth="4"
+                  strokeLinecap="round"
+                  initial={{ pathLength: 0 }}
+                  whileInView={{ pathLength: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.5, ease: "easeInOut" }}
+                />
+                {/* diagonal avenue */}
+                <motion.path
+                  d="M40 380 Q 160 260 260 140 T 380 40"
+                  stroke="#2B1B3A"
+                  strokeWidth="5"
+                  strokeLinecap="round"
+                  fill="none"
+                  initial={{ pathLength: 0 }}
+                  whileInView={{ pathLength: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.8, delay: 0.3, ease: "easeInOut" }}
+                />
+                {/* park */}
+                <rect
+                  x="20"
+                  y="20"
+                  width="100"
+                  height="100"
+                  rx="12"
+                  fill="#7AD9C4"
+                  stroke="#2B1B3A"
+                  strokeWidth="3"
+                />
+                <text
+                  x="70"
+                  y="75"
+                  textAnchor="middle"
+                  fontFamily="var(--font-hand)"
+                  fontSize="22"
+                  fill="#2B1B3A"
+                >
+                  parque
+                </text>
+                {/* plaza circle */}
+                <circle
+                  cx="320"
+                  cy="320"
+                  r="48"
+                  fill="#FFB199"
+                  stroke="#2B1B3A"
+                  strokeWidth="3"
+                />
+                <text
+                  x="320"
+                  y="328"
+                  textAnchor="middle"
+                  fontFamily="var(--font-hand)"
+                  fontSize="18"
+                  fill="#2B1B3A"
+                >
+                  plaza
+                </text>
+
+                {/* cafe marker (star) */}
+                <motion.g
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    delay: 1.4,
+                    type: "spring",
+                    stiffness: 180,
+                  }}
+                  style={{ transformOrigin: "220px 200px" }}
+                >
+                  <path
+                    d="M220 180 L 226 196 L 244 198 L 230 210 L 236 228 L 220 218 L 204 228 L 210 210 L 196 198 L 214 196 Z"
+                    fill="#FF6B6B"
+                    stroke="#2B1B3A"
+                    strokeWidth="3"
+                    strokeLinejoin="round"
+                  />
+                </motion.g>
+
+                {/* route */}
+                <motion.path
+                  d="M60 360 Q 120 340 140 300 Q 160 260 180 240 Q 200 220 220 200"
+                  stroke="#FF6B6B"
+                  strokeWidth="4"
+                  strokeDasharray="7 7"
+                  fill="none"
+                  initial={{ pathLength: 0 }}
+                  whileInView={{ pathLength: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.9, duration: 1.8 }}
+                />
+                {/* start pin */}
+                <circle cx="60" cy="360" r="9" fill="#2B1B3A" />
+                <circle cx="60" cy="360" r="4" fill="#FFF6E3" />
+
+                {/* trees / flowers scattered */}
+                <g>
+                  <circle cx="300" cy="90" r="10" fill="#7AD9C4" stroke="#2B1B3A" strokeWidth="2" />
+                  <circle cx="90" cy="300" r="10" fill="#7AD9C4" stroke="#2B1B3A" strokeWidth="2" />
+                  <circle cx="370" cy="220" r="8" fill="#FF9BAC" stroke="#2B1B3A" strokeWidth="2" />
+                </g>
+
+                {/* label for cafe */}
+                <text
+                  x="270"
+                  y="170"
+                  fontFamily="var(--font-hand)"
+                  fontSize="22"
+                  fontWeight="700"
+                  fill="#2B1B3A"
+                  transform="rotate(-6, 270, 170)"
+                >
+                  ¡aquí!
+                </text>
+              </svg>
+
+              <Cactus className="absolute bottom-3 right-4 w-10 h-14" />
             </div>
-            <div className="font-display font-bold text-xl">
-              Calle Orizaba 142
-            </div>
+
+            <p className="mt-4 text-center font-hand text-2xl text-ink/80">
+              {t.visit.mapNote}
+            </p>
+
+            <StarDoodle
+              className="absolute -top-4 -right-4 w-10 h-10 animate-wiggle"
+              color="#FF6B6B"
+            />
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
