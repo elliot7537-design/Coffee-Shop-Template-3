@@ -2,43 +2,32 @@ export type Locale = "es" | "en";
 
 type Dict = {
   nav: {
-    home: string;
-    story: string;
     menu: string;
-    experience: string;
+    story: string;
+    why: string;
     visit: string;
     reserve: string;
     language: string;
   };
   hero: {
-    eyebrow: string;
-    line1: string;
-    line2: string;
-    line3: string;
-    description: string;
-    ctaPrimary: string;
-    ctaSecondary: string;
-    stat1Value: string;
-    stat1Label: string;
-    stat2Value: string;
-    stat2Label: string;
-    stat3Value: string;
-    stat3Label: string;
-    marquee: string[];
+    hello: string;
+    welcome: string;
+    brand: string;
+    brandSub: string;
+    tagline: string;
+    cta: string;
+    ctaAlt: string;
+    badge: string;
+    sticker1: string;
+    sticker2: string;
+    sticker3: string;
+    handNote: string;
   };
-  story: {
+  recipe: {
     eyebrow: string;
     title: string;
-    paragraph1: string;
-    paragraph2: string;
-    feature1Title: string;
-    feature1Body: string;
-    feature2Title: string;
-    feature2Body: string;
-    feature3Title: string;
-    feature3Body: string;
-    feature4Title: string;
-    feature4Body: string;
+    parts: { label: string; note: string }[];
+    caption: string;
   };
   menu: {
     eyebrow: string;
@@ -46,19 +35,26 @@ type Dict = {
     subtitle: string;
     items: {
       name: string;
-      region: string;
-      notes: string;
+      desc: string;
       price: string;
-      weight: string;
-      tag: string;
+      mood: string;
     }[];
     cta: string;
   };
-  experience: {
+  story: {
     eyebrow: string;
     title: string;
-    subtitle: string;
-    cards: { title: string; body: string }[];
+    intro: string;
+    notes: {
+      title: string;
+      body: string;
+    }[];
+    pinned: string;
+  };
+  why: {
+    eyebrow: string;
+    title: string;
+    items: { title: string; body: string }[];
   };
   testimonials: {
     eyebrow: string;
@@ -71,328 +67,356 @@ type Dict = {
     address: string;
     hours: string;
     phone: string;
-    ctaDirections: string;
-    ctaReserve: string;
+    cta1: string;
+    cta2: string;
+    mapNote: string;
   };
   footer: {
+    bye: string;
     tagline: string;
-    explore: string;
-    contact: string;
-    follow: string;
     newsletter: string;
     placeholder: string;
-    subscribe: string;
+    sub: string;
     rights: string;
+    madeWith: string;
   };
 };
 
 export const translations: Record<Locale, Dict> = {
   es: {
     nav: {
-      home: "Inicio",
-      story: "Historia",
       menu: "Menú",
-      experience: "Experiencia",
-      visit: "Visítanos",
+      story: "Nuestra historia",
+      why: "Por qué",
+      visit: "Cómo llegar",
       reserve: "Reservar",
       language: "EN",
     },
     hero: {
-      eyebrow: "Tostado en la Ciudad de México",
-      line1: "Café de",
-      line2: "Nuestra",
-      line3: "Tierra",
-      description:
-        "Granos seleccionados a mano en las sierras de Chiapas, Oaxaca y Veracruz. Tostados lento, servidos con cariño.",
-      ctaPrimary: "Ver el menú",
-      ctaSecondary: "Nuestra historia",
-      stat1Value: "100%",
-      stat1Label: "Granos mexicanos",
-      stat2Value: "12+",
-      stat2Label: "Años tostando",
-      stat3Value: "3",
-      stat3Label: "Regiones de origen",
-      marquee: [
-        "café de especialidad",
-        "tostado artesanal",
-        "hecho en méxico",
-        "comercio justo",
-        "granos de altura",
-      ],
+      hello: "¡holaaaa!",
+      welcome: "bienvenid@ a",
+      brand: "Cafecito",
+      brandSub: "tu rincón de café en la Roma",
+      tagline:
+        "Granos chiquitos, corazones grandes. Café tostado a mano en el corazón de CDMX, con pan recién salido del horno y mucha mucha plática.",
+      cta: "ver el menú",
+      ctaAlt: "nuestra historia",
+      badge: "recién tostado",
+      sticker1: "100% mexicano",
+      sticker2: "abierto todos los días",
+      sticker3: "pan casero",
+      handNote: "léelo con café en mano ✿",
     },
-    story: {
-      eyebrow: "Nuestra historia",
-      title: "Desde la milpa hasta tu taza",
-      paragraph1:
-        "Fundado en 2012 por Doña Lupita y su hijo Mateo, Café del Sol nació con un sueño: honrar a los productores de café de México y compartir su trabajo con el mundo.",
-      paragraph2:
-        "Cada grano que servimos viaja menos de 600 kilómetros. Conocemos a las familias que los cultivan, los caminos de tierra y el aroma a leña de sus cocinas.",
-      feature1Title: "Cultivado en altura",
-      feature1Body:
-        "Fincas entre 1,200 y 1,800 metros sobre el nivel del mar, en sombra de árboles nativos.",
-      feature2Title: "Tostado lento",
-      feature2Body:
-        "Perfiles de tueste diseñados grano por grano, en nuestro tostador de hierro en la Roma Norte.",
-      feature3Title: "Comercio directo",
-      feature3Body:
-        "Pagamos hasta tres veces el precio de mercado a nuestras familias productoras.",
-      feature4Title: "Sin prisa",
-      feature4Body:
-        "Métodos de extracción manuales. El espresso tarda 28 segundos. La charla, un poquito más.",
+    recipe: {
+      eyebrow: "la receta de la casa",
+      title: "así se arma un cafecito",
+      parts: [
+        { label: "agua de manantial", note: "de Veracruz" },
+        { label: "granos de Chiapas", note: "tueste medio" },
+        { label: "leche de la ranchera", note: "o de avena :)" },
+        { label: "canela en polvo", note: "pizca chiquita" },
+        { label: "un poco de amor", note: "ingrediente secreto" },
+      ],
+      caption: "(shhh, no le digas a nadie del último ingrediente)",
     },
     menu: {
-      eyebrow: "Nuestros blends",
-      title: "Sabores de tres sierras",
+      eyebrow: "la cartita",
+      title: "nuestros favoritos",
       subtitle:
-        "Cada uno cuenta una historia distinta — escoge el que tu mañana pida.",
+        "Lo hacemos todos los días — escogidos con cariño por la Doña y servidos con una sonrisa.",
       items: [
         {
-          name: "Chiapas Alto",
-          region: "Sierra Madre, Chiapas",
-          notes: "Cacao, nuez moscada, naranja",
-          price: "$180",
-          weight: "250g",
-          tag: "Suave",
+          name: "Café de olla",
+          desc: "con piloncillo, canela y anís. como lo hacía la abuela.",
+          price: "$45",
+          mood: "acurrucable",
         },
         {
-          name: "Oaxaca Pluma",
-          region: "Sierra Sur, Oaxaca",
-          notes: "Chocolate oscuro, caramelo, tabaco",
-          price: "$210",
-          weight: "250g",
-          tag: "Intenso",
+          name: "Latte de cajeta",
+          desc: "espresso doble, cajeta de cabra y espuma tibia.",
+          price: "$62",
+          mood: "dulcecito",
         },
         {
-          name: "Veracruz Coatepec",
-          region: "Coatepec, Veracruz",
-          notes: "Miel, manzana, flor de jamaica",
-          price: "$195",
-          weight: "250g",
-          tag: "Afrutado",
+          name: "Mazapán frappé",
+          desc: "café frío, mazapán y una pizca de sal.",
+          price: "$72",
+          mood: "refrescante",
+        },
+        {
+          name: "Chocolate mexicano",
+          desc: "cacao de Tabasco con chile pasilla y canela.",
+          price: "$58",
+          mood: "picosito",
+        },
+        {
+          name: "Conchita con café",
+          desc: "concha de vainilla recién hecha + cualquier cafecito.",
+          price: "$85",
+          mood: "el combo perfecto",
+        },
+        {
+          name: "Agua de jamaica latte",
+          desc: "jamaica, leche de coco y espresso. raro pero rico.",
+          price: "$68",
+          mood: "experimental",
         },
       ],
-      cta: "Ver carta completa",
+      cta: "ver la cartita completa",
     },
-    experience: {
-      eyebrow: "La experiencia",
-      title: "Más que una cafetería",
-      subtitle:
-        "Un espacio donde el café, el arte popular y la sobremesa se encuentran.",
-      cards: [
+    story: {
+      eyebrow: "nuestra historia",
+      title: "empezó con una taza",
+      intro:
+        "Un día en 2017, Lupita y su sobrina Fer abrieron una ventanita en la Roma. Pensaron que nadie iba a venir. Ocho años después, aquí seguimos — platicando con los mismos clientes de siempre y conociendo a los nuevos.",
+      notes: [
         {
-          title: "Catas abiertas",
-          body: "Cada sábado a las 10am. Descubre los perfiles de cada región, gratis.",
+          title: "la abuela Lupita",
+          body: "maestra pastelera, reina de la concha, jefa oficial.",
         },
         {
-          title: "Talleres de barismo",
-          body: "Aprende a preparar un espresso perfecto con nuestros maestros baristas.",
+          title: "Fer",
+          body: "barista, tostadora, DJ de los domingos.",
         },
         {
-          title: "Mercado de productores",
-          body: "El último domingo del mes, conoce a las familias que cultivan tu café.",
+          title: "Firuláis",
+          body: "perrito oficial. duerme bajo la mesa 3.",
+        },
+      ],
+      pinned: "foto del primer día!",
+    },
+    why: {
+      eyebrow: "por qué cafecito",
+      title: "cosas que nos importan",
+      items: [
+        {
+          title: "café chiquito, mundo grande",
+          body: "compramos directo a 8 familias productoras en Chiapas, Oaxaca y Veracruz.",
         },
         {
-          title: "Sobremesa larga",
-          body: "Wi-Fi, enchufes y sillones. Quédate el tiempo que necesites.",
+          title: "todo hecho aquí",
+          body: "tostamos cada miércoles. el pan sale a las 6am, cuando abrimos.",
+        },
+        {
+          title: "queremos que te quedes",
+          body: "wifi rapidito, enchufes en cada mesa, y nadie te va a apurar. lo prometemos.",
+        },
+        {
+          title: "bienvenid@s todos",
+          body: "pet-friendly, peque-friendly, laptop-friendly. sólo no mal-vibes-friendly.",
         },
       ],
     },
     testimonials: {
-      eyebrow: "Lo que dicen",
-      title: "Voces de la casa",
+      eyebrow: "lo que dicen",
+      title: "cositas lindas",
       items: [
         {
           quote:
-            "El mejor café de la Roma. La gente, el ambiente, y ese latte con canela... me enamoré.",
-          name: "Valeria Mendoza",
-          role: "Regular, CDMX",
+            "el mejor latte de cajeta de toda la ciudad. pedí uno y me quedé tres horas.",
+          name: "Sofía R.",
+          role: "ingeniera, CDMX",
         },
         {
           quote:
-            "Visité en mi primer viaje a México y volví tres veces la misma semana. Auténtico y acogedor.",
-          name: "James O'Connor",
-          role: "Visitante, Dublín",
+            "me enseñaron a preparar café de olla en casa. ahora soy la estrella de los desayunos familiares.",
+          name: "Mateo G.",
+          role: "papá de dos",
         },
         {
           quote:
-            "Me encanta que conozcan de dónde viene cada grano. Eso se prueba en cada sorbo.",
-          name: "Carlos Iturbe",
-          role: "Chef, Polanco",
+            "Firuláis es la mejor parte. ah y el café también está riquísimo.",
+          name: "Ana P.",
+          role: "diseñadora",
         },
       ],
     },
     visit: {
-      eyebrow: "Visítanos",
-      title: "Te esperamos en la Roma",
-      address: "Calle Orizaba 142, Roma Norte, CDMX",
-      hours: "Lun – Dom · 7:00am – 9:00pm",
-      phone: "+52 55 1234 5678",
-      ctaDirections: "Cómo llegar",
-      ctaReserve: "Reservar mesa",
+      eyebrow: "cómo llegar",
+      title: "ven a visitarnos",
+      address: "Av. Álvaro Obregón 185, Roma Norte, CDMX",
+      hours: "todos los días · 7am – 9pm",
+      phone: "+52 55 4321 0987",
+      cta1: "ver en el mapa",
+      cta2: "reservar mesita",
+      mapNote: "aquí te esperamos! →",
     },
     footer: {
-      tagline: "Hecho con café y cariño en la Ciudad de México.",
-      explore: "Explora",
-      contact: "Contacto",
-      follow: "Síguenos",
-      newsletter: "Recibe nuestras catas",
+      bye: "¡nos vemos pronto!",
+      tagline: "un cafecito con cariño, hecho en la Roma.",
+      newsletter: "te mandamos recetas los viernes",
       placeholder: "tu@correo.com",
-      subscribe: "Suscribirse",
-      rights: "Todos los derechos reservados",
+      sub: "suscribirme",
+      rights: "todos los derechos reservados",
+      madeWith: "hecho con café y amor en CDMX",
     },
   },
   en: {
     nav: {
-      home: "Home",
-      story: "Story",
       menu: "Menu",
-      experience: "Experience",
-      visit: "Visit",
-      reserve: "Reserve",
+      story: "Our story",
+      why: "Why us",
+      visit: "Find us",
+      reserve: "Book",
       language: "ES",
     },
     hero: {
-      eyebrow: "Roasted in Mexico City",
-      line1: "Coffee from",
-      line2: "Our",
-      line3: "Land",
-      description:
-        "Beans hand-picked in the highlands of Chiapas, Oaxaca and Veracruz. Slow-roasted, served with heart.",
-      ctaPrimary: "See the menu",
-      ctaSecondary: "Our story",
-      stat1Value: "100%",
-      stat1Label: "Mexican beans",
-      stat2Value: "12+",
-      stat2Label: "Years roasting",
-      stat3Value: "3",
-      stat3Label: "Origin regions",
-      marquee: [
-        "specialty coffee",
-        "artisan roasted",
-        "made in mexico",
-        "fair trade",
-        "highland beans",
-      ],
+      hello: "heyyyy!",
+      welcome: "welcome to",
+      brand: "Cafecito",
+      brandSub: "your coffee nook in Roma, CDMX",
+      tagline:
+        "Tiny beans, big hearts. Hand-roasted coffee from the heart of Mexico City, bread fresh from the oven, and lots and lots of chatting.",
+      cta: "see the menu",
+      ctaAlt: "our story",
+      badge: "freshly roasted",
+      sticker1: "100% mexican",
+      sticker2: "open every day",
+      sticker3: "homemade bread",
+      handNote: "read with coffee in hand ✿",
     },
-    story: {
-      eyebrow: "Our story",
-      title: "From the milpa to your cup",
-      paragraph1:
-        "Founded in 2012 by Doña Lupita and her son Mateo, Café del Sol was born from one dream: to honor Mexican coffee growers and share their craft with the world.",
-      paragraph2:
-        "Every bean we serve travels less than 600 kilometers. We know the families who grow it, the dirt roads and the woodsmoke of their kitchens.",
-      feature1Title: "Grown at altitude",
-      feature1Body:
-        "Farms between 1,200 and 1,800 meters above sea level, shaded by native trees.",
-      feature2Title: "Slow roasted",
-      feature2Body:
-        "Roast profiles designed bean by bean, on our cast-iron roaster in Roma Norte.",
-      feature3Title: "Direct trade",
-      feature3Body:
-        "We pay up to three times market price to our producing families.",
-      feature4Title: "No rush",
-      feature4Body:
-        "Hand-brewed methods. Espresso takes 28 seconds. Conversation, a little longer.",
+    recipe: {
+      eyebrow: "the house recipe",
+      title: "how a cafecito is made",
+      parts: [
+        { label: "spring water", note: "from Veracruz" },
+        { label: "chiapas beans", note: "medium roast" },
+        { label: "farm-fresh milk", note: "or oat :)" },
+        { label: "a pinch of cinnamon", note: "just a tiny one" },
+        { label: "a little love", note: "secret ingredient" },
+      ],
+      caption: "(shhh, don't tell anyone about the last ingredient)",
     },
     menu: {
-      eyebrow: "Our blends",
-      title: "Flavors of three sierras",
+      eyebrow: "the little menu",
+      title: "our favorites",
       subtitle:
-        "Each one tells a different story — pick the one your morning is asking for.",
+        "Made fresh every day — picked with love by la Doña and served with a smile.",
       items: [
         {
-          name: "Chiapas Alto",
-          region: "Sierra Madre, Chiapas",
-          notes: "Cocoa, nutmeg, orange",
-          price: "$180",
-          weight: "250g",
-          tag: "Smooth",
+          name: "Café de olla",
+          desc: "with piloncillo, cinnamon & anise. like abuela used to make.",
+          price: "$45",
+          mood: "cozy",
         },
         {
-          name: "Oaxaca Pluma",
-          region: "Sierra Sur, Oaxaca",
-          notes: "Dark chocolate, caramel, tobacco",
-          price: "$210",
-          weight: "250g",
-          tag: "Bold",
+          name: "Cajeta latte",
+          desc: "double espresso, goat-milk caramel, warm foam.",
+          price: "$62",
+          mood: "sweet lil thing",
         },
         {
-          name: "Veracruz Coatepec",
-          region: "Coatepec, Veracruz",
-          notes: "Honey, apple, hibiscus",
-          price: "$195",
-          weight: "250g",
-          tag: "Fruity",
+          name: "Mazapán frappé",
+          desc: "iced coffee, mazapán candy, tiny pinch of salt.",
+          price: "$72",
+          mood: "refreshing",
+        },
+        {
+          name: "Mexican chocolate",
+          desc: "Tabasco cocoa, pasilla chili, a stick of cinnamon.",
+          price: "$58",
+          mood: "a lil spicy",
+        },
+        {
+          name: "Concha with coffee",
+          desc: "fresh vanilla concha + any coffee of your choice.",
+          price: "$85",
+          mood: "perfect combo",
+        },
+        {
+          name: "Hibiscus latte",
+          desc: "hibiscus, coconut milk and espresso. weird but good.",
+          price: "$68",
+          mood: "experimental",
         },
       ],
-      cta: "See full menu",
+      cta: "see the full menu",
     },
-    experience: {
-      eyebrow: "The experience",
-      title: "More than a coffee shop",
-      subtitle:
-        "A place where coffee, folk art, and lingering conversation meet.",
-      cards: [
+    story: {
+      eyebrow: "our story",
+      title: "it started with a cup",
+      intro:
+        "One day in 2017, Lupita and her niece Fer opened a tiny window in Roma. They thought nobody would come. Eight years later, we're still here — chatting with the same regulars and meeting new friends every day.",
+      notes: [
         {
-          title: "Open cuppings",
-          body: "Every Saturday at 10am. Discover the profile of each region — free of charge.",
+          title: "grandma Lupita",
+          body: "pastry master, concha queen, official boss.",
         },
         {
-          title: "Barista workshops",
-          body: "Learn how to pull a perfect espresso with our master baristas.",
+          title: "Fer",
+          body: "barista, roaster, Sunday morning DJ.",
         },
         {
-          title: "Farmers market",
-          body: "Last Sunday of the month — meet the families who grow your coffee.",
+          title: "Firuláis",
+          body: "official pup. sleeps under table 3.",
+        },
+      ],
+      pinned: "photo from opening day!",
+    },
+    why: {
+      eyebrow: "why cafecito",
+      title: "things that matter to us",
+      items: [
+        {
+          title: "little coffee, big world",
+          body: "we buy direct from 8 growing families in Chiapas, Oaxaca and Veracruz.",
         },
         {
-          title: "Long sobremesa",
-          body: "Wi-Fi, outlets, and cozy sofas. Stay as long as you need.",
+          title: "everything made here",
+          body: "we roast every wednesday. bread comes out at 6am, right when we open.",
+        },
+        {
+          title: "we want you to stay",
+          body: "speedy wifi, outlets at every table, and nobody will rush you. promise.",
+        },
+        {
+          title: "everyone's welcome",
+          body: "pet-friendly, kid-friendly, laptop-friendly. just not bad-vibes-friendly.",
         },
       ],
     },
     testimonials: {
-      eyebrow: "What folks say",
-      title: "Voices of the house",
+      eyebrow: "what folks say",
+      title: "sweet lil words",
       items: [
         {
           quote:
-            "The best coffee in Roma. The people, the vibe, and that cinnamon latte... I fell in love.",
-          name: "Valeria Mendoza",
-          role: "Regular, CDMX",
+            "the best cajeta latte in the whole city. I ordered one and stayed three hours.",
+          name: "Sofía R.",
+          role: "engineer, CDMX",
         },
         {
           quote:
-            "I visited on my first trip to Mexico and came back three times the same week. Authentic and warm.",
-          name: "James O'Connor",
-          role: "Visitor, Dublin",
+            "they taught me how to make café de olla at home. now I'm the breakfast star.",
+          name: "Mateo G.",
+          role: "dad of two",
         },
         {
           quote:
-            "I love that they know where each bean comes from. You can taste it in every sip.",
-          name: "Carlos Iturbe",
-          role: "Chef, Polanco",
+            "Firuláis is the best part. oh, and the coffee is also delicious.",
+          name: "Ana P.",
+          role: "designer",
         },
       ],
     },
     visit: {
-      eyebrow: "Visit us",
-      title: "We'll be waiting in Roma",
-      address: "Calle Orizaba 142, Roma Norte, CDMX",
-      hours: "Mon – Sun · 7:00am – 9:00pm",
-      phone: "+52 55 1234 5678",
-      ctaDirections: "Get directions",
-      ctaReserve: "Book a table",
+      eyebrow: "find us",
+      title: "come say hi",
+      address: "Av. Álvaro Obregón 185, Roma Norte, CDMX",
+      hours: "every day · 7am – 9pm",
+      phone: "+52 55 4321 0987",
+      cta1: "see on the map",
+      cta2: "book a tiny table",
+      mapNote: "we're right here! →",
     },
     footer: {
-      tagline: "Made with coffee and care in Mexico City.",
-      explore: "Explore",
-      contact: "Contact",
-      follow: "Follow",
-      newsletter: "Get our tasting notes",
+      bye: "see you soon!",
+      tagline: "a cafecito made with love in Roma.",
+      newsletter: "we send recipes on fridays",
       placeholder: "you@email.com",
-      subscribe: "Subscribe",
-      rights: "All rights reserved",
+      sub: "subscribe",
+      rights: "all rights reserved",
+      madeWith: "made with coffee and love in CDMX",
     },
   },
 };

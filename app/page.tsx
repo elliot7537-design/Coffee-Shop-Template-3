@@ -1,8 +1,9 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Story from "@/components/Story";
+import Recipe from "@/components/Recipe";
 import Menu from "@/components/Menu";
-import Experience from "@/components/Experience";
+import Story from "@/components/Story";
+import Why from "@/components/Why";
 import Testimonials from "@/components/Testimonials";
 import Visit from "@/components/Visit";
 import Footer from "@/components/Footer";
@@ -14,9 +15,10 @@ export default function Home() {
       <ScrollProgress />
       <Navbar />
       <Hero />
-      <Story />
+      <Recipe />
       <Menu />
-      <Experience />
+      <Story />
+      <Why />
       <Testimonials />
       <Visit />
       <Footer />

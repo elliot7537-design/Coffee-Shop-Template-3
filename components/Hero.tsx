@@ -2,9 +2,18 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { ArrowDown, Coffee, Sparkles } from "lucide-react";
 import { useLanguage } from "./LanguageProvider";
-import { WordMask } from "./AnimatedText";
+import {
+  Cup,
+  StarDoodle,
+  HeartDoodle,
+  HandArrow,
+  Squiggle,
+  Sparkle,
+  Cactus,
+  Chili,
+  CoffeeBean,
+} from "./Doodles";
 
 export default function Hero() {
   const { t } = useLanguage();
@@ -15,158 +24,205 @@ export default function Hero() {
     offset: ["start start", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
-  const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
-
-  const marqueeItems = [...t.hero.marquee, ...t.hero.marquee];
+  const cupY = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
+  const cupRotate = useTransform(scrollYProgress, [0, 1], [0, -10]);
+  const bgX = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]);
 
   return (
     <section
-      ref={ref}
       id="home"
-      className="relative min-h-screen overflow-hidden bg-gradient-to-b from-cream via-bone to-cream pt-28 md:pt-36"
+      ref={ref}
+      className="relative min-h-screen pt-28 md:pt-32 pb-24 overflow-hidden"
     >
-      {/* decorative floating elements */}
+      {/* Floating doodles */}
       <motion.div
-        style={{ y: bgY }}
-        className="pointer-events-none absolute inset-0 opacity-40"
+        style={{ x: bgX }}
+        className="absolute inset-0 pointer-events-none"
       >
-        <div className="absolute -top-20 -left-20 h-96 w-96 rounded-full bg-terracotta/15 blur-3xl" />
-        <div className="absolute top-1/2 -right-24 h-[28rem] w-[28rem] rounded-full bg-sun/15 blur-3xl" />
-        <div className="absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-cactus/10 blur-3xl" />
+        <StarDoodle
+          className="absolute top-[18%] left-[6%] w-8 h-8 animate-spin"
+          style={{ animationDuration: "14s" }}
+          color="#FFD56B"
+        />
+        <StarDoodle
+          className="absolute top-[70%] left-[10%] w-6 h-6"
+          color="#FF9BAC"
+        />
+        <HeartDoodle
+          className="absolute top-[28%] right-[8%] w-8 h-8 animate-wiggle"
+          color="#FF6B6B"
+        />
+        <Sparkle
+          className="absolute top-[62%] right-[12%] w-10 h-10"
+          color="#7AD9C4"
+        />
+        <CoffeeBean className="absolute top-[80%] right-[22%] w-5 h-7 rotate-12" />
+        <CoffeeBean className="absolute top-[14%] right-[28%] w-4 h-6 -rotate-45" />
+        <Cactus className="absolute bottom-4 left-[4%] w-14 h-20" />
+        <Chili className="absolute bottom-8 right-[4%] w-10 h-16 -rotate-12" />
       </motion.div>
 
-      {/* floating seeds */}
-      <FloatingSeed className="top-24 left-[8%]" delay={0} />
-      <FloatingSeed className="top-40 right-[12%]" delay={0.4} scale={0.8} />
-      <FloatingSeed className="bottom-40 left-[15%]" delay={0.8} scale={1.2} />
-      <FloatingSeed className="bottom-24 right-[18%]" delay={1.2} />
-
-      <motion.div
-        style={{ y, scale, opacity }}
-        className="relative mx-auto max-w-7xl px-5 md:px-8 pb-20"
-      >
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex items-center justify-center gap-2 mb-6"
-        >
-          <span className="h-[1px] w-10 bg-terracotta" />
-          <span className="font-script text-terracotta text-xl md:text-2xl">
-            {t.hero.eyebrow}
-          </span>
-          <span className="h-[1px] w-10 bg-terracotta" />
-        </motion.div>
-
-        <h1 className="text-center font-display font-black leading-[0.9] tracking-tight text-cocoa">
-          <span className="block text-6xl md:text-8xl lg:text-[9rem]">
-            <WordMask text={t.hero.line1} onMount />
-          </span>
-          <span className="block text-6xl md:text-8xl lg:text-[9rem] relative">
-            <WordMask text={t.hero.line2} delay={0.15} onMount />
-            <motion.span
-              initial={{ scale: 0, rotate: -45 }}
-              animate={{ scale: 1, rotate: 0 }}
-              transition={{ delay: 1, type: "spring", stiffness: 160 }}
-              className="inline-block ml-4 align-middle"
-            >
-              <Sparkles className="inline text-sun" size={48} />
-            </motion.span>
-          </span>
-          <span className="block text-7xl md:text-9xl lg:text-[11rem] grad-text italic">
-            <WordMask text={t.hero.line3} delay={0.3} onMount />
-          </span>
-        </h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.9 }}
-          className="mx-auto mt-8 max-w-2xl text-center text-base md:text-lg text-cocoa/70 leading-relaxed"
-        >
-          {t.hero.description}
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.1 }}
-          className="mt-10 flex flex-wrap items-center justify-center gap-4"
-        >
-          <a
-            href="#menu"
-            className="group inline-flex items-center gap-2 rounded-full bg-cocoa px-7 py-4 text-sm font-semibold text-cream hover:bg-terracotta transition-all hover:shadow-xl hover:shadow-terracotta/30"
-          >
-            <Coffee size={18} className="group-hover:rotate-12 transition-transform" />
-            {t.hero.ctaPrimary}
-            <span className="ml-1 group-hover:translate-x-1 transition-transform">→</span>
-          </a>
-          <a
-            href="#story"
-            className="inline-flex items-center gap-2 rounded-full border-2 border-cocoa px-7 py-4 text-sm font-semibold text-cocoa hover:bg-cocoa hover:text-cream transition-colors"
-          >
-            {t.hero.ctaSecondary}
-          </a>
-        </motion.div>
-
-        {/* stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.3 }}
-          className="mx-auto mt-16 max-w-3xl grid grid-cols-3 gap-4 md:gap-8"
-        >
-          {[
-            [t.hero.stat1Value, t.hero.stat1Label],
-            [t.hero.stat2Value, t.hero.stat2Label],
-            [t.hero.stat3Value, t.hero.stat3Label],
-          ].map(([v, l], i) => (
+      <div className="relative mx-auto max-w-6xl px-5 md:px-8">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+          {/* LEFT: text */}
+          <div className="relative text-center md:text-left order-2 md:order-1">
+            {/* hello tag */}
             <motion.div
-              key={i}
-              whileHover={{ y: -4 }}
-              className="text-center border-l-2 border-terracotta/40 first:border-l-0 px-3"
+              initial={{ opacity: 0, rotate: -12, y: -20 }}
+              animate={{ opacity: 1, rotate: -6, y: 0 }}
+              transition={{ delay: 0.2, type: "spring", stiffness: 140 }}
+              className="inline-block bg-bubblegum text-ink px-4 py-1.5 rounded-full border-[2.5px] border-ink shadow-sticker font-hand text-2xl -ml-1"
             >
-              <div className="font-display font-black text-3xl md:text-5xl text-cocoa">
-                {v}
-              </div>
-              <div className="mt-1 text-xs md:text-sm text-cocoa/60 uppercase tracking-wider">
-                {l}
-              </div>
+              {t.hero.hello}
             </motion.div>
-          ))}
-        </motion.div>
-      </motion.div>
 
-      {/* scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.6 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-cocoa/60"
-      >
-        <span className="text-xs uppercase tracking-widest">Scroll</span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <ArrowDown size={18} />
-        </motion.div>
-      </motion.div>
-
-      {/* marquee band */}
-      <div className="absolute bottom-0 left-0 right-0 bg-cocoa text-cream py-4 overflow-hidden border-y border-terracotta/30">
-        <div className="flex animate-marquee whitespace-nowrap">
-          {marqueeItems.map((item, i) => (
-            <span
-              key={i}
-              className="font-display font-black uppercase text-xl md:text-2xl mx-8 flex items-center gap-8"
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35 }}
+              className="mt-4 font-hand text-2xl md:text-3xl text-ink/80"
             >
-              {item}
-              <span className="text-sun">✦</span>
-            </span>
+              {t.hero.welcome}
+            </motion.p>
+
+            {/* Brand title */}
+            <h1 className="relative mt-1 font-display font-bold leading-[0.95] text-ink">
+              <motion.span
+                initial={{ opacity: 0, y: 30, rotate: -3 }}
+                animate={{ opacity: 1, y: 0, rotate: 0 }}
+                transition={{ delay: 0.45, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                className="inline-block text-[18vw] md:text-[9.5rem] lg:text-[12rem]"
+              >
+                Cafe
+                <span className="text-coral">cito</span>
+                <span className="text-coral">.</span>
+              </motion.span>
+              <Squiggle
+                className="absolute -bottom-2 left-0 md:left-2 w-48 md:w-72 h-4"
+                color="#FFD56B"
+              />
+            </h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7 }}
+              className="mt-6 text-base md:text-lg text-ink/80 max-w-md mx-auto md:mx-0 leading-relaxed"
+            >
+              {t.hero.tagline}
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.85 }}
+              className="mt-7 flex flex-wrap gap-3 justify-center md:justify-start"
+            >
+              <a
+                href="#menu"
+                className="group inline-flex items-center gap-2 rounded-full border-[2.5px] border-ink bg-coral text-paper px-6 py-3 text-sm font-bold shadow-stamp hover:shadow-[6px_6px_0_0_#2B1B3A] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
+              >
+                {t.hero.cta}
+                <span className="group-hover:translate-x-1 transition-transform">
+                  →
+                </span>
+              </a>
+              <a
+                href="#story"
+                className="inline-flex items-center gap-2 rounded-full border-[2.5px] border-ink bg-paper px-6 py-3 text-sm font-bold shadow-stamp hover:bg-sunny transition-colors"
+              >
+                {t.hero.ctaAlt}
+              </a>
+            </motion.div>
+
+            {/* Handwritten note with arrow */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.2 }}
+              className="relative mt-10 hidden md:block"
+            >
+              <span className="font-marker text-ink/70 text-xl rotate-[-4deg] inline-block">
+                {t.hero.handNote}
+              </span>
+              <HandArrow className="absolute -top-6 -right-28 w-28 h-16 rotate-[20deg]" />
+            </motion.div>
+          </div>
+
+          {/* RIGHT: cup mascot */}
+          <div className="relative order-1 md:order-2 flex justify-center">
+            <motion.div
+              style={{ y: cupY, rotate: cupRotate }}
+              initial={{ scale: 0.6, opacity: 0, rotate: -15 }}
+              animate={{ scale: 1, opacity: 1, rotate: 0 }}
+              transition={{
+                delay: 0.3,
+                duration: 1,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="relative w-[260px] md:w-[360px] lg:w-[420px]"
+            >
+              <Cup className="w-full h-auto drop-shadow-[6px_6px_0_#2B1B3A]" />
+
+              {/* Sticker: "recién tostado" */}
+              <motion.div
+                initial={{ scale: 0, rotate: -40 }}
+                animate={{ scale: 1, rotate: -14 }}
+                transition={{ delay: 1, type: "spring", stiffness: 140 }}
+                className="absolute -top-6 -right-2 md:-right-8 bg-mint text-ink font-bold uppercase text-xs tracking-wider px-3 py-2 rounded-full border-[2.5px] border-ink shadow-sticker"
+              >
+                ★ {t.hero.badge}
+              </motion.div>
+            </motion.div>
+
+            {/* Orbiting stickers around cup */}
+            <FloatingTag
+              className="top-[10%] -left-2 md:left-4 bg-sky"
+              delay={1.2}
+              rotate={-8}
+            >
+              {t.hero.sticker1}
+            </FloatingTag>
+            <FloatingTag
+              className="bottom-[14%] -left-4 md:left-0 bg-bubblegum"
+              delay={1.4}
+              rotate={6}
+            >
+              {t.hero.sticker2}
+            </FloatingTag>
+            <FloatingTag
+              className="bottom-[2%] right-0 bg-sunny"
+              delay={1.6}
+              rotate={-6}
+            >
+              {t.hero.sticker3}
+            </FloatingTag>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom marquee band */}
+      <div className="absolute left-0 right-0 bottom-0 bg-ink text-paper border-t-[2.5px] border-ink py-3 overflow-hidden">
+        <div className="flex animate-marquee whitespace-nowrap">
+          {[...Array(2)].map((_, outer) => (
+            <div key={outer} className="flex items-center">
+              {[
+                "café tostado a mano",
+                "pan recién hecho",
+                "hecho en CDMX",
+                "abiertos 7am-9pm",
+                "wifi rapidito",
+                "pet-friendly",
+              ].map((txt, i) => (
+                <span
+                  key={i}
+                  className="font-display font-semibold text-lg mx-6 flex items-center gap-6"
+                >
+                  {txt}
+                  <StarDoodle className="w-5 h-5 inline-block" color="#FFD56B" />
+                </span>
+              ))}
+            </div>
           ))}
         </div>
       </div>
@@ -174,36 +230,26 @@ export default function Hero() {
   );
 }
 
-function FloatingSeed({
+function FloatingTag({
+  children,
   className = "",
   delay = 0,
-  scale = 1,
+  rotate = 0,
 }: {
+  children: React.ReactNode;
   className?: string;
   delay?: number;
-  scale?: number;
+  rotate?: number;
 }) {
   return (
     <motion.div
-      className={`absolute pointer-events-none ${className}`}
-      initial={{ opacity: 0, scale: 0 }}
-      animate={{ opacity: 1, scale }}
-      transition={{ delay: 1.5 + delay, duration: 0.6 }}
+      initial={{ opacity: 0, scale: 0, rotate: rotate - 20 }}
+      animate={{ opacity: 1, scale: 1, rotate }}
+      transition={{ delay, type: "spring", stiffness: 160 }}
+      whileHover={{ rotate: 0, scale: 1.06 }}
+      className={`absolute text-[11px] md:text-xs font-bold uppercase tracking-wide px-3 py-1.5 rounded-full border-[2.5px] border-ink shadow-sticker ${className}`}
     >
-      <motion.div
-        animate={{ y: [0, -18, 0], rotate: [0, 14, 0] }}
-        transition={{ duration: 5 + delay, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <svg width="32" height="46" viewBox="0 0 32 46" fill="none">
-          <ellipse cx="16" cy="23" rx="14" ry="22" fill="#3E2217" />
-          <path
-            d="M16 2 C18 14, 18 32, 16 44"
-            stroke="#F5EBDC"
-            strokeWidth="1.2"
-            fill="none"
-          />
-        </svg>
-      </motion.div>
+      {children}
     </motion.div>
   );
 }
