@@ -76,11 +76,13 @@ export default function Navbar() {
         </ul>
 
         <div className="flex items-center gap-2">
-          {/* Segmented language toggle — active pill is clearly highlighted */}
+          {/* Segmented language toggle — active pill is clearly highlighted.
+              translate="no" prevents browser auto-translation from mangling the codes. */}
           <div
             role="group"
             aria-label="Language"
-            className="relative inline-flex items-center rounded-full border-[2.5px] border-ink bg-paper p-0.5 shadow-sticker overflow-hidden"
+            translate="no"
+            className="notranslate relative inline-flex items-center rounded-full border-[2.5px] border-ink bg-paper p-0.5 shadow-sticker overflow-hidden"
           >
             {(["es", "en"] as const).map((lang) => {
               const active = locale === lang;
@@ -88,9 +90,12 @@ export default function Navbar() {
                 <button
                   key={lang}
                   type="button"
+                  lang={lang}
+                  translate="no"
                   onClick={() => setLocale(lang)}
                   aria-pressed={active}
-                  className={`relative z-10 px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wide rounded-full transition-colors ${
+                  aria-label={lang === "es" ? "Español" : "English"}
+                  className={`notranslate relative z-10 px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wide rounded-full transition-colors ${
                     active
                       ? "bg-ink text-paper"
                       : "text-ink/60 hover:text-ink"
