@@ -363,16 +363,6 @@ export default function Recipe() {
 
   return (
     <section className="relative py-24 md:py-32 overflow-hidden">
-      {/* notebook lined background behind just this section */}
-      <div
-        aria-hidden
-        className="absolute inset-0 opacity-[0.08]"
-        style={{
-          backgroundImage:
-            "repeating-linear-gradient(transparent, transparent 38px, #2B1B3A 38px, #2B1B3A 39px)",
-        }}
-      />
-
       <div className="relative mx-auto max-w-6xl px-5 md:px-8">
         {/* Title */}
         <div className="text-center mb-14">
